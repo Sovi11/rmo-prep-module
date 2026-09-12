@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RMO Prep Module</title>
+<link rel="stylesheet" href="assets/vendor/katex/katex.min.css">
+<link rel="stylesheet" href="assets/css/styles.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%23f0b429'/><text x='16' y='23' font-size='18' font-weight='bold' text-anchor='middle' font-family='sans-serif' fill='%2317130a'>∑</text></svg>">
+<script src="assets/vendor/katex/katex.min.js"></script>
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar" id="sidebar">
+    <div class="brand">
+      <div class="brand-row">
+        <div class="brand-mark">∑</div>
+        <div>
+          <div class="brand-name">RMO Prep Module</div>
+          <div class="brand-sub">Stage 2 · Nov 15, 2026</div>
+        </div>
+      </div>
+    </div>
+    <div class="countdown" id="countdown"></div>
+    <nav class="nav" id="nav"></nav>
+    <div class="sidebar-foot">
+      <button class="chip-btn" id="themeBtn" title="Toggle theme">◐ Theme</button>
+      <a class="chip-btn" href="#/settings">Data</a>
+      <span class="save-dot" id="saveDot" title="Saved"></span>
+    </div>
+  </aside>
+
+  <main class="main" id="main">
+    <div class="topbar">
+      <button class="menu-btn" id="menuBtn">☰</button>
+      <div class="crumb" id="crumb"></div>
+      <div class="topbar-actions">
+        <button class="search-btn" id="searchBtn">
+          <span>⌕</span><span>Search everything</span><kbd>⌘K</kbd>
+        </button>
+      </div>
+    </div>
+    <div id="view"></div>
+  </main>
+</div>
+<div id="modal"></div>
+<script type="module" src="assets/js/app.js"></script>
+</body>
+</html>
