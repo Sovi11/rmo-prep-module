@@ -196,42 +196,66 @@ $$\frac{[ABD]}{[ACD]} = \frac{BD}{DC} = 1 \implies BD = DC. \;∎$$
 [/sol]
 
 ### G7 | Medium | CRMO 2016 P1
-Let $ABC$ be a right-angled triangle with $\angle B = 90^\circ$, and let $I$ be its incentre. Draw a line perpendicular to $AI$ at $I$, and let it intersect the line $CB$ at $D$. Prove that $CI$ is perpendicular to $AD$, and prove that $ID = \sqrt{b(b-a)}$ where $BC = a$ and $CA = b$.
+Let $ABC$ be a right-angled triangle with $\angle B = 90^\circ$, and let $I$ be its incentre. Draw a line perpendicular to $AI$ at $I$, and let it intersect the line $CB$ at $D$. Prove that $CI$ is perpendicular to $AD$, and that
+$$ID = \sqrt{b(b-a)}, \qquad\text{where } BC = a \text{ and } CA = b.$$
 [hint]
-For the first part, show $I$ is the orthocentre of triangle $ACD$. For the length, use the right triangle $AID$ and compute $AI$ and $AD$.
+Coordinates make both parts short: put $B$ at the origin with the legs on the axes, so $I = (r,r)$ with $r = \frac{a+c-b}{2}$. Find $D$ explicitly, then check one dot product and one distance.
 [/hint]
 [sol]
-**Part 1: $CI \perp AD$.**
+**Setup.** Put
+$$B = (0,0), \qquad A = (0,c), \qquad C = (a,0),$$
+where $c = AB$, $a = BC$ and $b = CA = \sqrt{a^2+c^2}$. For a right angle at $B$ the inradius is
+$$r = \frac{a+c-b}{2}, \qquad I = (r,\,r).$$
 
-In triangle $ACD$:
-- $DI \perp AI$ by construction, and $A$, $I$ lie on the line $AI$; so $DI$ is the altitude from $D$ to side $AC$... more precisely, $DI$ is perpendicular to line $AI$, which passes through $A$. For $DI$ to be an altitude of $ACD$ we need it perpendicular to $AC$, which is not given.
+**Locate $D$.** The direction of $AI$ is
+$$\vec{AI} = I - A = (r,\ r-c).$$
+A direction perpendicular to it is $(c-r,\ r)$, since
+$$(r)(c-r)+(r-c)(r) = rc-r^2+r^2-rc = 0.$$
+So the line through $I$ perpendicular to $AI$ is
+$$\big(r+t(c-r),\ \ r+tr\big), \qquad t\in\mathbb{R}.$$
 
-Argue instead as follows. Consider triangle $ACD$ with $D$ on line $CB$.
-- The line $AI$ bisects $\angle BAC$, i.e. $\angle DAC$ (since $D$ lies on line $CB$ and $B$ is between... the bisector of $\angle A$ in triangle $ABC$ is also the bisector of $\angle DAC$ when $D$ is on line $BC$).
-- $DI\perp AI$ means $DI$ is perpendicular to the bisector of $\angle DAC$ at the point $I$ of that bisector.
+The line $CB$ is the $x$-axis, so set the $y$-coordinate to zero: $r+tr = 0$ gives $t = -1$, and
+$$D = \big(r-(c-r),\ 0\big) = (2r-c,\ 0).$$
+Since $2r - c = (a+c-b)-c = a-b$,
+$$\boxed{D = (a-b,\ 0)}$$
+Note $b>a$ (the hypotenuse is the longest side), so $a-b<0$ and $D$ lies on ray $CB$ **beyond $B$** — which fixes the configuration.
 
-A line perpendicular to the bisector of an angle, meeting the two sides of the angle, cuts off an **isosceles** triangle. Hence the triangle formed by $AI$-bisector, $AD$ and $AC$ is isosceles: $AD = AC'$ for the corresponding point. Concretely this gives $\angle ADI = \angle ACI$ appropriately, and a short chase shows $I$ is the **orthocentre** of $\triangle ACD$: since $DI\perp AI$ and $AI$ is a cevian of $ACD$ through $A$, $DI$ is the altitude from $D$; the altitude from $A$ meets it at $I$; therefore the third altitude, from $C$, also passes through $I$, i.e.
-$$CI \perp AD. \;✓$$
+**Part 1: $CI\perp AD$.** Compute the two direction vectors:
+$$\vec{CI} = I - C = (r-a,\ r), \qquad \vec{AD} = D-A = (a-b,\ -c).$$
+Their dot product is
+$$(r-a)(a-b) - rc.$$
+Substituting $r = \frac{a+c-b}{2}$, so that $r-a = \frac{c-b-a}{2}$:
+$$(r-a)(a-b)-rc = \frac{(c-b-a)(a-b) - c(a+c-b)}{2}.$$
+Expanding the numerator:
+$$(c-b-a)(a-b) = ca-cb-ab+b^2-a^2+ab = ca-cb+b^2-a^2,$$
+$$c(a+c-b) = ca+c^2-cb,$$
+so the numerator is
+$$\left(ca-cb+b^2-a^2\right)-\left(ca+c^2-cb\right) = b^2-a^2-c^2 = 0,$$
+using $b^2 = a^2+c^2$.
+
+The dot product vanishes, so $CI \perp AD$. ✓
 
 **Part 2: $ID = \sqrt{b(b-a)}$.**
+$$ID^2 = \big(r-(a-b)\big)^2 + r^2.$$
+Now
+$$r-(a-b) = \frac{a+c-b}{2}-(a-b) = \frac{a+c-b-2a+2b}{2} = \frac{b+c-a}{2},$$
+so, writing $P = b+c-a$ and $Q = a+c-b = 2r$,
+$$ID^2 = \frac{P^2+Q^2}{4}.$$
+Since $P+Q = 2c$ and $P-Q = 2(b-a)$,
+$$P^2+Q^2 = \frac{(P+Q)^2+(P-Q)^2}{2} = \frac{4c^2+4(b-a)^2}{2} = 2c^2+2(b-a)^2.$$
+Hence
+$$ID^2 = \frac{2c^2+2(b-a)^2}{4} = \frac{c^2+(b-a)^2}{2}.$$
+Finally substitute $c^2 = b^2-a^2$:
+$$ID^2 = \frac{\left(b^2-a^2\right)+\left(b^2-2ab+a^2\right)}{2} = \frac{2b^2-2ab}{2} = b^2-ab = b(b-a).$$
 
-In the right triangle $AID$ (right angle at $I$),
-$$ID^2 = AD^2 - AI^2.$$
+Therefore
+$$ID = \sqrt{b(b-a)}. \;∎$$
 
-*Compute $AI$.* With $\angle B = 90^\circ$, the inradius is $r = \frac{a+c-b}{2}$ where $c = AB$, and
-$$AI = \frac{r}{\sin\frac A2}.$$
+**Numerical check ($3,4,5$ triangle: $a = 4$, $c = 3$, $b = 5$).** Then $r = \frac{4+3-5}{2}=1$, so $I=(1,1)$ and $D = (4-5,0) = (-1,0)$.
+- $\vec{CI} = (1-4,\,1) = (-3,1)$ and $\vec{AD} = (-1,-3)$; dot $= 3-3 = 0$ ✓
+- $ID^2 = (1-(-1))^2+1^2 = 4+1 = 5$, and $b(b-a) = 5(5-4) = 5$ ✓
 
-*Compute $AD$.* Since the perpendicular to the bisector $AI$ at $I$ meets line $CB$ at $D$, triangle $ABD$ is isosceles with $AD$ determined by the reflection of ray $AB$ in the bisector $AI$ landing on ray $AC$. Reflecting $B$ in line $AI$ gives a point $B'$ on ray $AC$ with $AB' = AB = c$, and $D$ is the point where line $CB$ meets the perpendicular to $AI$ at $I$; one finds $AD = \dfrac{AI}{\cos\frac A2}\cdot\!\ldots$
-
-**Cleanest route for Part 2.** In right triangle $AID$, $\angle IAD = \frac A2$, so
-$$ID = AI\tan\frac A2, \qquad AD = \frac{AI}{\cos\frac A2}.$$
-Now use $AI = \frac{r}{\sin\frac A2}$ to get
-$$ID = \frac{r}{\sin\frac A2}\cdot\frac{\sin\frac A2}{\cos\frac A2} = \frac{r}{\cos\frac A2}.$$
-With $\angle B = 90^\circ$ we have $\cos A = \frac{c}{b}$, so $\cos^2\frac A2 = \frac{1+\cos A}{2} = \frac{b+c}{2b}$, and $r = \frac{a+c-b}{2}$. Substituting,
-$$ID^2 = \frac{r^2}{\cos^2\frac A2} = \frac{(a+c-b)^2}{4}\cdot\frac{2b}{b+c} = \frac{b\,(a+c-b)^2}{2(b+c)}.$$
-Using $b^2 = a^2+c^2$ one checks this simplifies to $b(b-a)$.
-
-**Honest note.** The simplification in the last line, and the configuration details in Part 1, are fiddly; verify your version against the [official CRMO 2016 paper](https://olympiads.hbcse.tifr.res.in/olympiads/wp-content/uploads/2016/11/QPcrmo-16_1.pdf). The **reusable facts** are $AI = \frac{r}{\sin\frac A2}$ and "a perpendicular to an angle bisector cuts off an isosceles triangle" — both worth memorising.
+**Why coordinates were the right call.** A right angle at $B$ hands you the axes for free, and the incentre of a right triangle has the exceptionally simple form $(r,r)$. Two of the three "switch to computation" signals from the trigonometry chapter are present, and the whole problem is then four short calculations.
 [/sol]
 
 ### G8 | Hard | RMO 2018 P1
