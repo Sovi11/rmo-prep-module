@@ -1,0 +1,779 @@
+{
+ "generated": true,
+ "exam": {
+  "name": "RMO 2026",
+  "date": "2026-11-15",
+  "time": "13:00–16:00 IST",
+  "problems": 6,
+  "duration": "3 hours"
+ },
+ "sections": [
+  {
+   "id": "foundations",
+   "icon": "◆",
+   "title": "Foundations & method",
+   "weight": "every paper",
+   "blurb": "How an RMO answer is marked, the proof techniques that appear everywhere, and how to spend the three hours.",
+   "chapters": [
+    {
+     "id": "tool-01-proof-writing",
+     "file": "toolbox/tool-01-proof-writing.md",
+     "title": "Writing a proof that scores",
+     "blurb": "What a marker actually rewards, how to structure a solution, and the six ways people throw away marks they had earned.",
+     "level": "Essential",
+     "hours": "3",
+     "problems": 6
+    },
+    {
+     "id": "tool-02-techniques",
+     "file": "toolbox/tool-02-techniques.md",
+     "title": "Core proof techniques",
+     "blurb": "Induction, contradiction, the extremal principle, WLOG and invariance — the five moves that appear in every area of the syllabus.",
+     "level": "Essential",
+     "hours": "5",
+     "problems": 10
+    },
+    {
+     "id": "tool-03-exam-strategy",
+     "file": "toolbox/tool-03-exam-strategy.md",
+     "title": "Exam strategy for the three hours",
+     "blurb": "How to read the paper, allocate the 180 minutes, decide when to abandon a problem, and what to do in the last twenty minutes.",
+     "level": "Essential",
+     "hours": "1",
+     "problems": 4
+    }
+   ]
+  },
+  {
+   "id": "number-theory",
+   "icon": "ℕ",
+   "title": "Number theory",
+   "weight": "1–2 of 6 problems",
+   "blurb": "The highest-yield area at RMO: divisibility, congruences, and Diophantine equations reward technique over inspiration.",
+   "chapters": [
+    {
+     "id": "nt-01-divisibility",
+     "file": "number-theory/nt-01-divisibility.md",
+     "title": "Divisibility, gcd and the Euclidean algorithm",
+     "blurb": "The division algorithm, gcd and lcm, Bézout's identity, and the handful of manipulations that start almost every number theory problem.",
+     "level": "Foundation",
+     "hours": "4",
+     "problems": 10
+    },
+    {
+     "id": "nt-02-primes",
+     "file": "number-theory/nt-02-primes.md",
+     "title": "Primes and unique factorisation",
+     "blurb": "The fundamental theorem of arithmetic, divisor counting, Legendre's formula, and p-adic valuation as a way of thinking.",
+     "level": "Foundation",
+     "hours": "4",
+     "problems": 10
+    },
+    {
+     "id": "nt-03-congruences",
+     "file": "number-theory/nt-03-congruences.md",
+     "title": "Modular arithmetic and the CRT",
+     "blurb": "Congruences as a calculus, choosing the right modulus, linear congruences, inverses, and the Chinese Remainder Theorem.",
+     "level": "Core",
+     "hours": "5",
+     "problems": 10
+    },
+    {
+     "id": "nt-04-fermat-euler",
+     "file": "number-theory/nt-04-fermat-euler.md",
+     "title": "Fermat, Euler, Wilson and orders",
+     "blurb": "The three named theorems that let you compute with exponents, plus the order of an element — the tool that makes them sharp.",
+     "level": "Core",
+     "hours": "5",
+     "problems": 10
+    },
+    {
+     "id": "nt-05-diophantine",
+     "file": "number-theory/nt-05-diophantine.md",
+     "title": "Diophantine equations",
+     "blurb": "Linear equations, Simon's factoring trick, bounding, Pythagorean triples, and infinite descent — the four ways an equation in integers gets solved.",
+     "level": "Core",
+     "hours": "5",
+     "problems": 10
+    },
+    {
+     "id": "nt-06-advanced",
+     "file": "number-theory/nt-06-advanced.md",
+     "title": "Lifting the exponent and quadratic residues",
+     "blurb": "Two sharp tools — LTE for computing the exact power of p dividing a^n ± b^n, and quadratic residues for deciding when a square exists.",
+     "level": "Advanced",
+     "hours": "4",
+     "problems": 10
+    },
+    {
+     "id": "nt-07-digits-floor",
+     "file": "number-theory/nt-07-digits-floor.md",
+     "title": "Digits, bases and the floor function",
+     "blurb": "Base representations, digit sums and divisibility rules, and how to compute with floors without guessing.",
+     "level": "Core",
+     "hours": "3",
+     "problems": 10
+    }
+   ]
+  },
+  {
+   "id": "algebra",
+   "icon": "ƒ",
+   "title": "Algebra",
+   "weight": "1–2 of 6 problems",
+   "blurb": "Polynomials, functional equations, sequences and complex numbers — where a clean idea finishes a problem in half a page.",
+   "chapters": [
+    {
+     "id": "alg-01-polynomials",
+     "file": "algebra/alg-01-polynomials.md",
+     "title": "Polynomials, roots and Vieta",
+     "blurb": "The factor theorem, Vieta's relations, symmetric functions, and how to extract information from a polynomial you cannot factor.",
+     "level": "Foundation",
+     "hours": "4",
+     "problems": 10
+    },
+    {
+     "id": "alg-02-integer-polynomials",
+     "file": "algebra/alg-02-integer-polynomials.md",
+     "title": "Integer polynomials",
+     "blurb": "Where algebra meets number theory — the a−b divides P(a)−P(b) lemma, rational roots, and irreducibility tests. A perennial RMO favourite.",
+     "level": "Core",
+     "hours": "4",
+     "problems": 10
+    },
+    {
+     "id": "alg-03-functional-equations",
+     "file": "algebra/alg-03-functional-equations.md",
+     "title": "Functional equations",
+     "blurb": "The opening moves — substitution, injectivity, surjectivity, fixed points — and how to finish by pinning the function down and verifying.",
+     "level": "Core",
+     "hours": "4",
+     "problems": 10
+    },
+    {
+     "id": "alg-04-sequences",
+     "file": "algebra/alg-04-sequences.md",
+     "title": "Sequences, recurrences and sums",
+     "blurb": "Telescoping, linear recurrences and their closed forms, and the standard tricks for evaluating or bounding a sum you cannot compute directly.",
+     "level": "Core",
+     "hours": "3",
+     "problems": 10
+    },
+    {
+     "id": "alg-05-complex",
+     "file": "algebra/alg-05-complex.md",
+     "title": "Complex numbers and roots of unity",
+     "blurb": "Modulus and argument, De Moivre, roots of unity and the filter trick, and using complex numbers as a computational engine for geometry.",
+     "level": "Core",
+     "hours": "3",
+     "problems": 10
+    }
+   ]
+  },
+  {
+   "id": "inequalities",
+   "icon": "≤",
+   "title": "Inequalities",
+   "weight": "0–1 of 6 problems",
+   "blurb": "A small toolkit — AM–GM, Cauchy–Schwarz, convexity — plus the judgement to know which one to reach for.",
+   "chapters": [
+    {
+     "id": "ineq-01-amgm",
+     "file": "inequalities/ineq-01-amgm.md",
+     "title": "AM–GM and its relatives",
+     "blurb": "The workhorse inequality, the weighted version, and the art of splitting terms so that equality lands where you need it.",
+     "level": "Foundation",
+     "hours": "3",
+     "problems": 10
+    },
+    {
+     "id": "ineq-02-cauchy",
+     "file": "inequalities/ineq-02-cauchy.md",
+     "title": "Cauchy–Schwarz and the Engel form",
+     "blurb": "The second workhorse. Cauchy–Schwarz, its Engel (Titu) rearrangement, and the power mean inequality that sits behind both.",
+     "level": "Core",
+     "hours": "3",
+     "problems": 10
+    },
+    {
+     "id": "ineq-03-convexity",
+     "file": "inequalities/ineq-03-convexity.md",
+     "title": "Convexity, Jensen and rearrangement",
+     "blurb": "Jensen's inequality, the rearrangement inequality and Chebyshev's sum inequality — the three tools for inequalities that AM–GM cannot reach.",
+     "level": "Core",
+     "hours": "3",
+     "problems": 10
+    },
+    {
+     "id": "ineq-04-strategy",
+     "file": "inequalities/ineq-04-strategy.md",
+     "title": "Strategy — normalisation, SOS and substitution",
+     "blurb": "How to decide what to do. Homogenising, normalising, Ravi and Schur, the SOS method, and when to stop being clever and just expand.",
+     "level": "Advanced",
+     "hours": "3",
+     "problems": 10
+    }
+   ]
+  },
+  {
+   "id": "combinatorics",
+   "icon": "⧉",
+   "title": "Combinatorics",
+   "weight": "1–2 of 6 problems",
+   "blurb": "Counting, pigeonhole, invariants and extremal arguments. The least memorisable area, and the most rewarding to train.",
+   "chapters": [
+    {
+     "id": "comb-01-counting",
+     "file": "combinatorics/comb-01-counting.md",
+     "title": "Counting, bijections and stars and bars",
+     "blurb": "The addition and multiplication principles done carefully, permutations and combinations, bijective counting, and distributing identical objects.",
+     "level": "Foundation",
+     "hours": "3",
+     "problems": 10
+    },
+    {
+     "id": "comb-02-binomial",
+     "file": "combinatorics/comb-02-binomial.md",
+     "title": "Binomial coefficients and identities",
+     "blurb": "Pascal's rule, the binomial theorem, the standard identities and how to prove them by counting the same thing twice.",
+     "level": "Core",
+     "hours": "3",
+     "problems": 10
+    },
+    {
+     "id": "comb-03-pie",
+     "file": "combinatorics/comb-03-pie.md",
+     "title": "Inclusion–exclusion",
+     "blurb": "The formula, how to set it up without losing a sign, and the standard applications — derangements, surjections, and counting with forbidden patterns.",
+     "level": "Core",
+     "hours": "2",
+     "problems": 10
+    },
+    {
+     "id": "comb-04-pigeonhole",
+     "file": "combinatorics/comb-04-pigeonhole.md",
+     "title": "The pigeonhole principle",
+     "blurb": "Deceptively simple and endlessly deep. The principle, its strong form, and the real skill — choosing what the pigeons and holes should be.",
+     "level": "Core",
+     "hours": "3",
+     "problems": 10
+    },
+    {
+     "id": "comb-05-recursion",
+     "file": "combinatorics/comb-05-recursion.md",
+     "title": "Recursion and double counting",
+     "blurb": "Setting up a recurrence by conditioning on the last step, and proving identities by counting the same set two different ways.",
+     "level": "Core",
+     "hours": "3",
+     "problems": 10
+    },
+    {
+     "id": "comb-06-invariants",
+     "file": "combinatorics/comb-06-invariants.md",
+     "title": "Invariants, monovariants and colourings",
+     "blurb": "The heart of olympiad combinatorics. Finding what a process cannot change, what it can only push one way, and how a clever colouring makes both visible.",
+     "level": "Core",
+     "hours": "4",
+     "problems": 10
+    },
+    {
+     "id": "comb-07-graphs",
+     "file": "combinatorics/comb-07-graphs.md",
+     "title": "Graphs and combinatorial games",
+     "blurb": "Enough graph theory for RMO — degrees, connectivity, trees, bipartite graphs, Euler and Hamilton — plus the winning-position idea behind combinatorial games.",
+     "level": "Core",
+     "hours": "3",
+     "problems": 10
+    }
+   ]
+  },
+  {
+   "id": "geometry",
+   "icon": "△",
+   "title": "Geometry",
+   "weight": "1–2 of 6 problems",
+   "blurb": "Slowest to build, so it runs as a parallel track from week one. Angle chasing first, configurations second, computation as a fallback.",
+   "chapters": [
+    {
+     "id": "geo-01-angle-chasing",
+     "file": "geometry/geo-01-angle-chasing.md",
+     "title": "Angle chasing",
+     "blurb": "The inscribed angle theorem, cyclic quadrilaterals, and the discipline of directed angles — the foundation everything else in geometry is built on.",
+     "level": "Foundation",
+     "hours": "4",
+     "problems": 10
+    },
+    {
+     "id": "geo-02-circles",
+     "file": "geometry/geo-02-circles.md",
+     "title": "Circles and the power of a point",
+     "blurb": "Power of a point, the radical axis, tangent conditions and Ptolemy — the tools that turn circle configurations into equations about lengths.",
+     "level": "Core",
+     "hours": "4",
+     "problems": 10
+    },
+    {
+     "id": "geo-03-centers",
+     "file": "geometry/geo-03-centers.md",
+     "title": "Triangle centres and the Euler line",
+     "blurb": "Incentre, circumcentre, centroid, orthocentre — where they are, what they satisfy, and the Euler line and nine-point circle that tie them together.",
+     "level": "Core",
+     "hours": "4",
+     "problems": 10
+    },
+    {
+     "id": "geo-04-ceva-menelaus",
+     "file": "geometry/geo-04-ceva-menelaus.md",
+     "title": "Ceva, Menelaus and mass points",
+     "blurb": "The two ratio theorems that settle concurrency and collinearity, plus mass points — the fastest way to compute a ratio on a cevian.",
+     "level": "Core",
+     "hours": "3",
+     "problems": 10
+    },
+    {
+     "id": "geo-05-trig-lengths",
+     "file": "geometry/geo-05-trig-lengths.md",
+     "title": "Trigonometry and lengths",
+     "blurb": "Sine and cosine rules, area formulas, Stewart and the median formula — the computational fallback that finishes a problem when synthetic geometry stalls.",
+     "level": "Core",
+     "hours": "3",
+     "problems": 10
+    },
+    {
+     "id": "geo-06-transformations",
+     "file": "geometry/geo-06-transformations.md",
+     "title": "Homothety, spiral similarity and reflections",
+     "blurb": "Seeing a configuration as the image of a simpler one. Homothety, spiral similarity, and the reflections that make hard problems short.",
+     "level": "Advanced",
+     "hours": "3",
+     "problems": 10
+    },
+    {
+     "id": "geo-07-computational",
+     "file": "geometry/geo-07-computational.md",
+     "title": "Coordinates, vectors and complex numbers",
+     "blurb": "The last-resort methods that always work. How to set up coordinates well, when vectors beat coordinates, and the unit-circle trick that makes circle problems algebraic.",
+     "level": "Core",
+     "hours": "3",
+     "problems": 10
+    }
+   ]
+  },
+  {
+   "id": "past-papers",
+   "icon": "▤",
+   "title": "Past problems by topic",
+   "weight": "do these last",
+   "blurb": "Real RMO and INMO problems regrouped by the technique they need, so you can drill one skill at a time.",
+   "chapters": [
+    {
+     "id": "pyq-number-theory",
+     "file": "papers/pyq-number-theory.md",
+     "title": "Past problems — number theory",
+     "blurb": "Real RMO and CRMO number theory problems, grouped so you can drill the area before sitting whole papers. Statements are transcribed from the official HBCSE papers.",
+     "level": "Mixed",
+     "hours": "6",
+     "problems": 10
+    },
+    {
+     "id": "pyq-algebra",
+     "file": "papers/pyq-algebra.md",
+     "title": "Past problems — algebra",
+     "blurb": "Real RMO and CRMO algebra problems — polynomials, symmetric systems, sequences and inequalities — transcribed from the official papers.",
+     "level": "Mixed",
+     "hours": "5",
+     "problems": 10
+    },
+    {
+     "id": "pyq-combinatorics",
+     "file": "papers/pyq-combinatorics.md",
+     "title": "Past problems — combinatorics",
+     "blurb": "Real RMO and CRMO combinatorics — counting, constructions, colourings and extremal arguments — transcribed from the official papers.",
+     "level": "Mixed",
+     "hours": "5",
+     "problems": 10
+    },
+    {
+     "id": "pyq-geometry",
+     "file": "papers/pyq-geometry.md",
+     "title": "Past problems — geometry",
+     "blurb": "Real RMO and CRMO geometry problems, transcribed from the official papers. Do these with a large, accurate diagram and a compass.",
+     "level": "Mixed",
+     "hours": "6",
+     "problems": 10
+    }
+   ]
+  }
+ ],
+ "plan": [
+  {
+   "week": 0,
+   "start": "2026-09-12",
+   "end": "2026-09-13",
+   "dates": "Fri 12 – Sun 14 Sep · kickoff",
+   "title": "Diagnostic weekend",
+   "chapters": [
+    "tool-01-proof-writing"
+   ],
+   "focus": "**Do this before anything else.** Sit **RMO 2024** cold: three hours, no notes, no internet, written out in full as if it were the real thing. You will probably solve one or two. That is the point — you need a baseline, not a score.\n\nThen mark it yourself against the official solutions and answer three questions in the scratchpad:\n- Which problems did I *understand* but fail to *finish*? (technique gap — fixable fast)\n- Which did I not know how to start? (topic gap — that topic goes early in the plan)\n- Where did I write something true but unconvincing? (writing gap — read the first chapter today)\n\nFinish the weekend by reading **Writing a proof that scores**. Everything else builds on it."
+  },
+  {
+   "week": 1,
+   "start": "2026-09-14",
+   "end": "2026-09-20",
+   "dates": "Mon 14 – Sun 20 Sep",
+   "title": "Foundations + Number theory I",
+   "chapters": [
+    "tool-02-techniques",
+    "nt-01-divisibility",
+    "nt-02-primes",
+    "geo-01-angle-chasing"
+   ],
+   "focus": "Number theory first, because it converts effort into marks faster than anything else on the paper.\n\n- **Mon–Tue** · Core proof techniques: induction, contradiction, extremal, WLOG.\n- **Wed–Thu** · Divisibility, gcd, the Euclidean algorithm, Bézout.\n- **Fri** · Primes, unique factorisation, counting divisors, Legendre's formula.\n- **Sat** · Geometry track: pure angle chasing. Do not skip this — geometry is the slow skill.\n- **Sun** · Redo every problem you flagged. Write two of them out in full.\n\nTarget: 28 problems this week, at least 6 written out properly."
+  },
+  {
+   "week": 2,
+   "start": "2026-09-21",
+   "end": "2026-09-27",
+   "dates": "Mon 21 – Sun 27 Sep",
+   "title": "Number theory II · congruences",
+   "chapters": [
+    "nt-03-congruences",
+    "nt-04-fermat-euler",
+    "geo-02-circles"
+   ],
+   "focus": "Modular arithmetic is the single most reusable tool in the subject. By Sunday, \"take it mod something\" should be an instinct.\n\n- **Mon–Wed** · Congruences, linear congruences, the Chinese Remainder Theorem.\n- **Thu–Fri** · Fermat, Euler, Wilson, and the order of an element.\n- **Sat** · Geometry: circles, cyclic quadrilaterals, power of a point.\n- **Sun** · Mixed set — pull 8 unsolved number theory problems from the problem bank at random.\n\nTarget: 30 problems. Start timing yourself: 25 minutes per problem, then look at the hint."
+  },
+  {
+   "week": 3,
+   "start": "2026-09-28",
+   "end": "2026-10-04",
+   "dates": "Mon 28 Sep – Sun 4 Oct",
+   "title": "Number theory III · equations",
+   "chapters": [
+    "nt-05-diophantine",
+    "nt-06-advanced",
+    "nt-07-digits-floor",
+    "geo-03-centers"
+   ],
+   "focus": "Finish number theory. After this week it goes into maintenance — a few problems a week, no new theory.\n\n- **Mon–Tue** · Diophantine equations: factoring, bounding, infinite descent, Pythagorean triples.\n- **Wed** · Lifting the exponent, quadratic residues, choosing the right modulus.\n- **Thu** · Digits, bases, and the floor function.\n- **Fri–Sat** · Geometry: the four centres, the Euler line, the nine-point circle.\n- **Sun** · **Past problems by topic → Number theory.** Real RMO problems, timed.\n\nTarget: 32 problems. You should now be finishing an average RMO number theory problem in under 30 minutes."
+  },
+  {
+   "week": 4,
+   "start": "2026-10-05",
+   "end": "2026-10-11",
+   "dates": "Mon 5 – Sun 11 Oct",
+   "title": "Algebra I · polynomials",
+   "chapters": [
+    "alg-01-polynomials",
+    "alg-02-integer-polynomials",
+    "geo-04-ceva-menelaus",
+    "pyq-number-theory"
+   ],
+   "focus": "- **Mon–Tue** · Polynomials: roots, Vieta, the factor theorem, symmetric functions.\n- **Wed–Thu** · Integer polynomials: the $a-b \\mid P(a)-P(b)$ lemma, rational root theorem, irreducibility. This is where algebra and number theory meet, and RMO loves it.\n- **Fri–Sat** · Geometry: Ceva, Menelaus, mass points.\n- **Sun** · Half paper: pick any three problems from an old RMO, 90 minutes.\n\nTarget: 28 problems, plus the number theory past-problem set finished."
+  },
+  {
+   "week": 5,
+   "start": "2026-10-12",
+   "end": "2026-10-18",
+   "dates": "Mon 12 – Sun 18 Oct",
+   "title": "Algebra II · equations & sequences",
+   "chapters": [
+    "alg-03-functional-equations",
+    "alg-04-sequences",
+    "alg-05-complex",
+    "geo-05-trig-lengths"
+   ],
+   "focus": "- **Mon–Tue** · Functional equations: substitution, injectivity/surjectivity, the standard opening moves.\n- **Wed** · Sequences, recurrences, telescoping.\n- **Thu** · Complex numbers and roots of unity.\n- **Fri–Sat** · Geometry: sine and cosine rules, area formulas, Stewart, Ptolemy. The computational fallback for when synthetic fails.\n- **Sun** · Mixed algebra set from the bank.\n\nTarget: 30 problems. Halfway point — check the dashboard and see which area is furthest behind."
+  },
+  {
+   "week": 6,
+   "start": "2026-10-19",
+   "end": "2026-10-25",
+   "dates": "Mon 19 – Sun 25 Oct",
+   "title": "Inequalities",
+   "chapters": [
+    "ineq-01-amgm",
+    "ineq-02-cauchy",
+    "ineq-03-convexity",
+    "ineq-04-strategy",
+    "geo-06-transformations",
+    "pyq-algebra"
+   ],
+   "focus": "Inequalities are a compact syllabus with a high floor: a week of concentrated work usually takes someone from \"no idea\" to \"reliably solves the easy one\".\n\n- **Mon** · AM–GM, weighted AM–GM.\n- **Tue** · Cauchy–Schwarz and the Engel form.\n- **Wed** · Convexity, Jensen, rearrangement, Chebyshev.\n- **Thu** · Strategy: normalisation, SOS, substitution, when to give up and expand.\n- **Fri–Sat** · Geometry: homothety, spiral similarity, radical axes.\n- **Sun** · **Past problems by topic → Algebra.**\n\nTarget: 30 problems."
+  },
+  {
+   "week": 7,
+   "start": "2026-10-26",
+   "end": "2026-11-01",
+   "dates": "Mon 26 Oct – Sun 1 Nov",
+   "title": "Combinatorics I",
+   "chapters": [
+    "comb-01-counting",
+    "comb-02-binomial",
+    "comb-03-pie",
+    "comb-04-pigeonhole",
+    "geo-07-computational"
+   ],
+   "focus": "- **Mon** · Counting, bijections, stars and bars.\n- **Tue** · Binomial coefficients and identities.\n- **Wed** · Inclusion–exclusion.\n- **Thu–Fri** · Pigeonhole. Deceptively deep — most RMO combinatorics problems are pigeonhole in disguise.\n- **Sat** · Geometry: coordinates, vectors, complex numbers. Your last-resort method.\n- **Sun** · Mixed set.\n\nTarget: 30 problems. Three weeks left — from here on, every Sunday is a timed paper."
+  },
+  {
+   "week": 8,
+   "start": "2026-11-02",
+   "end": "2026-11-08",
+   "dates": "Mon 2 – Sun 8 Nov",
+   "title": "Combinatorics II + first full mock",
+   "chapters": [
+    "comb-05-recursion",
+    "comb-06-invariants",
+    "comb-07-graphs",
+    "pyq-combinatorics",
+    "pyq-geometry"
+   ],
+   "focus": "- **Mon** · Recursions and double counting.\n- **Tue–Wed** · Invariants, monovariants, colourings, the extremal principle. The heart of olympiad combinatorics.\n- **Thu** · Graph theory basics and combinatorial games.\n- **Fri** · Past problems by topic: combinatorics and geometry.\n- **Sat** · **Full mock #1** — RMO 2023, three hours, strictly timed, written in full.\n- **Sun** · Mark it against the official solutions. Be harsh. Every gap you forgive now costs 17 marks in the real thing.\n\nTarget: 26 problems + one full paper."
+  },
+  {
+   "week": 9,
+   "start": "2026-11-09",
+   "end": "2026-11-15",
+   "dates": "Mon 9 – Sun 15 Nov · exam week",
+   "title": "Revision, mocks, and exam day",
+   "chapters": [
+    "tool-03-exam-strategy",
+    "tool-01-proof-writing"
+   ],
+   "focus": "**No new theory this week.** Nothing you learn now will be reliable under pressure; everything you revise now will be.\n\n- **Mon** · Every problem you flagged ⚑, in one sitting. Re-solve, do not re-read.\n- **Tue** · **Full mock #2** — RMO 2019, three hours.\n- **Wed** · Mark it. Rewrite your two weakest solutions properly.\n- **Thu** · Re-read your own chapter notes end to end. This is why you wrote them.\n- **Fri** · **Full mock #3** — RMO 2017, three hours. Last one.\n- **Sat** · Light. Read the exam strategy chapter. One easy problem per topic to stay warm. Pack: pens, geometry box, admit card. Sleep early.\n- **Sun 15 Nov · 1:00–4:00 pm** · RMO. Read all six problems in the first five minutes. Start with the one you can finish, not the one you find interesting.\n\nGood luck."
+  }
+ ],
+ "papers": [
+  {
+   "id": "rmo2025a",
+   "group": "RMO — the main event",
+   "title": "RMO 2025 · Paper 1 (non-KV/JNV)",
+   "note": "most recent · closest to what you will sit",
+   "links": {
+    "Paper": "https://olympiads.hbcse.tifr.res.in/wp-content/uploads/2025/11/RMO-2025-Paper-1.pdf",
+    "Solutions": "https://olympiads.hbcse.tifr.res.in/wp-content/uploads/2025/12/RMO-2025-solutions.pdf",
+    "Hindi": "https://olympiads.hbcse.tifr.res.in/wp-content/uploads/2025/11/rmo_nov_2025_paper-1_hindi.pdf"
+   }
+  },
+  {
+   "id": "rmo2025b",
+   "group": "RMO — the main event",
+   "title": "RMO 2025 · Paper 2 (KV/JNV)",
+   "links": {
+    "Paper": "https://olympiads.hbcse.tifr.res.in/wp-content/uploads/2025/11/RMO-2025-Paper-2.pdf",
+    "Solutions": "https://olympiads.hbcse.tifr.res.in/wp-content/uploads/2025/12/KV-RMO-2025-solutions.pdf"
+   }
+  },
+  {
+   "id": "rmo2024",
+   "group": "RMO — the main event",
+   "title": "RMO 2024",
+   "note": "questions and official solutions in one file",
+   "links": {
+    "Paper + solutions": "https://olympiads.hbcse.tifr.res.in/wp-content/uploads/2024/11/Official-Solutions-for-RMO-2024.pdf"
+   }
+  },
+  {
+   "id": "rmo2023a",
+   "group": "RMO — the main event",
+   "title": "RMO 2023 · non-KV/JNV",
+   "links": {
+    "Paper": "https://olympiads.hbcse.tifr.res.in/wp-content/uploads/2023/10/rmo-combined.pdf",
+    "Solutions": "https://olympiads.hbcse.tifr.res.in/wp-content/uploads/2023/11/NonKV-or-Non-JNV.pdf"
+   }
+  },
+  {
+   "id": "rmo2023b",
+   "group": "RMO — the main event",
+   "title": "RMO 2023 · KV/JNV",
+   "links": {
+    "Paper": "https://olympiads.hbcse.tifr.res.in/wp-content/uploads/2023/10/KVJNV_Bilingual.pdf",
+    "Solutions": "https://olympiads.hbcse.tifr.res.in/wp-content/uploads/2023/11/KV-n-JNV.pdf"
+   }
+  },
+  {
+   "id": "rmo2019",
+   "group": "RMO — the main event",
+   "title": "RMO 2019",
+   "links": {
+    "Paper": "https://olympiads.hbcse.tifr.res.in/wp-content/uploads/2019/10/rmoengfirst2019.pdf",
+    "Solutions": "https://olympiads.hbcse.tifr.res.in/wp-content/uploads/2019/10/rmosolutions2019.pdf"
+   }
+  },
+  {
+   "id": "rmo2018",
+   "group": "RMO — the main event",
+   "title": "RMO 2018",
+   "note": "solutions include the problems",
+   "links": {
+    "Solutions (7 Oct)": "https://olympiads.hbcse.tifr.res.in/olympiads/wp-content/uploads/2018/05/solutions-crmo-18.pdf",
+    "Solutions (KL–TN, 28 Oct)": "https://olympiads.hbcse.tifr.res.in/olympiads/wp-content/uploads/2018/05/solutions-KL-TN-18.pdf"
+   }
+  },
+  {
+   "id": "rmo2017",
+   "group": "RMO — the main event",
+   "title": "RMO 2017",
+   "links": {
+    "Paper": "https://olympiads.hbcse.tifr.res.in/olympiads/wp-content/uploads/2017/10/rmo2017.pdf",
+    "Solutions": "https://olympiads.hbcse.tifr.res.in/olympiads/wp-content/uploads/2017/10/sol-crmo-20171.pdf"
+   }
+  },
+  {
+   "id": "crmo2016",
+   "group": "CRMO — regional sets (4 papers per year)",
+   "title": "CRMO 2016 · Papers 1–4",
+   "note": "four different regional papers — a whole month of Sundays",
+   "links": {
+    "Paper 1": "https://olympiads.hbcse.tifr.res.in/olympiads/wp-content/uploads/2016/11/QPcrmo-16_1.pdf",
+    "Paper 2": "https://olympiads.hbcse.tifr.res.in/olympiads/wp-content/uploads/2016/11/QPcrmo-16_2.pdf",
+    "Paper 3": "https://olympiads.hbcse.tifr.res.in/olympiads/wp-content/uploads/2016/11/QPcrmo-16_3.pdf",
+    "Paper 4": "https://olympiads.hbcse.tifr.res.in/olympiads/wp-content/uploads/2016/11/QPcrmo-16_4.pdf",
+    "Solutions (P4)": "https://olympiads.hbcse.tifr.res.in/olympiads/wp-content/uploads/2016/11/crmo-16_4.pdf"
+   }
+  },
+  {
+   "id": "crmo2015",
+   "group": "CRMO — regional sets (4 papers per year)",
+   "title": "CRMO 2015 · Papers 1–5",
+   "note": "paper 5 is the Mumbai region set",
+   "links": {
+    "Paper 1": "https://olympiads.hbcse.tifr.res.in/olympiads/wp-content/uploads/2016/09/crmo-15-1.pdf",
+    "Paper 2": "https://olympiads.hbcse.tifr.res.in/olympiads/wp-content/uploads/2016/09/crmo-15-2.pdf",
+    "Paper 3": "https://olympiads.hbcse.tifr.res.in/olympiads/wp-content/uploads/2016/09/crmo-15-3.pdf",
+    "Paper 4": "https://olympiads.hbcse.tifr.res.in/olympiads/wp-content/uploads/2016/09/crmo-15-4.pdf",
+    "Paper 5": "https://olympiads.hbcse.tifr.res.in/olympiads/wp-content/uploads/2016/09/crmo-15-5.pdf"
+   }
+  },
+  {
+   "id": "crmo2014",
+   "group": "CRMO — regional sets (4 papers per year)",
+   "title": "CRMO 2014 · Papers 1–5",
+   "links": {
+    "Paper 1": "https://olympiads.hbcse.tifr.res.in/olympiads/wp-content/uploads/2016/09/crmo-14-1.pdf",
+    "Paper 2": "https://olympiads.hbcse.tifr.res.in/olympiads/wp-content/uploads/2016/09/crmo-14-2.pdf",
+    "Paper 3": "https://olympiads.hbcse.tifr.res.in/olympiads/wp-content/uploads/2016/09/crmo-14-3.pdf",
+    "Paper 4": "https://olympiads.hbcse.tifr.res.in/olympiads/wp-content/uploads/2016/09/crmo-14-4.pdf",
+    "Paper 5": "https://olympiads.hbcse.tifr.res.in/olympiads/wp-content/uploads/2016/09/crmo-14-5.pdf"
+   }
+  },
+  {
+   "id": "crmo2013",
+   "group": "CRMO — regional sets (4 papers per year)",
+   "title": "CRMO 2013 · Papers 1–4 + Mumbai",
+   "links": {
+    "Paper 1": "https://olympiads.hbcse.tifr.res.in/olympiads/wp-content/uploads/2016/09/crmo-2013-paper-1.pdf",
+    "Paper 2": "https://olympiads.hbcse.tifr.res.in/olympiads/wp-content/uploads/2016/09/crmo-2013-paper-2.pdf",
+    "Paper 3": "https://olympiads.hbcse.tifr.res.in/olympiads/wp-content/uploads/2016/09/crmo-2013-paper-3.pdf",
+    "Paper 4": "https://olympiads.hbcse.tifr.res.in/olympiads/wp-content/uploads/2016/09/crmo-2013-paper-4.pdf",
+    "Mumbai region": "https://olympiads.hbcse.tifr.res.in/olympiads/wp-content/uploads/2016/09/rmo-2013-mumbai-region.pdf"
+   }
+  },
+  {
+   "id": "crmo2012",
+   "group": "CRMO — regional sets (4 papers per year)",
+   "title": "CRMO 2012 · Papers 1–4 + Mumbai",
+   "note": "files include solutions",
+   "links": {
+    "Paper 1": "https://olympiads.hbcse.tifr.res.in/olympiads/wp-content/uploads/2016/09/crmosol-12-1.pdf",
+    "Paper 2": "https://olympiads.hbcse.tifr.res.in/olympiads/wp-content/uploads/2016/09/crmosol-12-2.pdf",
+    "Paper 3": "https://olympiads.hbcse.tifr.res.in/olympiads/wp-content/uploads/2016/09/crmosol-12-3.pdf",
+    "Paper 4": "https://olympiads.hbcse.tifr.res.in/olympiads/wp-content/uploads/2016/09/crmosol-12-4.pdf",
+    "Mumbai region": "https://olympiads.hbcse.tifr.res.in/olympiads/wp-content/uploads/2016/09/rmo-2012-mumbai-region.pdf"
+   }
+  },
+  {
+   "id": "rmoarchive",
+   "group": "CRMO — regional sets (4 papers per year)",
+   "title": "RMO / CRMO 2000–2011 — the full HBCSE archive",
+   "note": "older papers are shorter and gentler; good early practice",
+   "links": {
+    "Browse the archive": "https://olympiads.hbcse.tifr.res.in/how-to-prepare/past-papers/"
+   }
+  },
+  {
+   "id": "inmo2026",
+   "group": "INMO — the stage after RMO (stretch practice)",
+   "title": "INMO 2026",
+   "note": "harder than RMO — use single problems, not whole papers",
+   "links": {
+    "Paper": "https://olympiads.hbcse.tifr.res.in/wp-content/uploads/2026/01/INMO-2026.pdf"
+   }
+  },
+  {
+   "id": "inmo2025",
+   "group": "INMO — the stage after RMO (stretch practice)",
+   "title": "INMO 2025",
+   "links": {
+    "Paper": "https://olympiads.hbcse.tifr.res.in/wp-content/uploads/2025/01/INMO2025_Hindi_English.pdf"
+   }
+  },
+  {
+   "id": "inmo2024",
+   "group": "INMO — the stage after RMO (stretch practice)",
+   "title": "INMO 2024",
+   "links": {
+    "Paper": "https://olympiads.hbcse.tifr.res.in/wp-content/uploads/2024/03/INMO2024-Q.-Paper.pdf",
+    "Solutions": "https://olympiads.hbcse.tifr.res.in/wp-content/uploads/2024/02/INMO_2024_final_solutions.pdf"
+   }
+  },
+  {
+   "id": "inmo2023",
+   "group": "INMO — the stage after RMO (stretch practice)",
+   "title": "INMO 2023",
+   "links": {
+    "Paper": "https://olympiads.hbcse.tifr.res.in/wp-content/uploads/2023/01/INMO23_qp.pdf",
+    "Solutions": "https://olympiads.hbcse.tifr.res.in/wp-content/uploads/2023/03/solutions.pdf"
+   }
+  },
+  {
+   "id": "inmo2020",
+   "group": "INMO — the stage after RMO (stretch practice)",
+   "title": "INMO 2020",
+   "links": {
+    "Paper": "https://olympiads.hbcse.tifr.res.in/wp-content/uploads/2020/04/inmo-20-QP-4_0.pdf",
+    "Solutions": "https://olympiads.hbcse.tifr.res.in/wp-content/uploads/2020/02/sol-inmo-20.pdf"
+   }
+  },
+  {
+   "id": "inmo2016",
+   "group": "INMO — the stage after RMO (stretch practice)",
+   "title": "INMO 2016",
+   "links": {
+    "Paper": "https://olympiads.hbcse.tifr.res.in/olympiads/wp-content/uploads/2016/09/INMO-2016-English-Version.pdf",
+    "Solutions": "https://olympiads.hbcse.tifr.res.in/olympiads/wp-content/uploads/2016/09/sol-inmo16.pdf"
+   }
+  },
+  {
+   "id": "ioqm2025",
+   "group": "IOQM — stage 1 (speed & accuracy maintenance)",
+   "title": "IOQM 2025",
+   "note": "keep one of these for a rainy day — good for arithmetic speed",
+   "links": {
+    "Paper": "https://olympiads.hbcse.tifr.res.in/wp-content/uploads/2025/10/en.M1.pdf",
+    "Answer key": "https://olympiads.hbcse.tifr.res.in/wp-content/uploads/2025/10/final-key-7th-September.pdf"
+   }
+  },
+  {
+   "id": "ioqm2024",
+   "group": "IOQM — stage 1 (speed & accuracy maintenance)",
+   "title": "IOQM 2024",
+   "links": {
+    "Paper": "https://olympiads.hbcse.tifr.res.in/wp-content/uploads/2025/04/ioqm-2024-english.pdf",
+    "Answer key": "https://olympiads.hbcse.tifr.res.in/wp-content/uploads/2025/04/ioqm2024-answerkey.pdf"
+   }
+  },
+  {
+   "id": "ioqm2021",
+   "group": "IOQM — stage 1 (speed & accuracy maintenance)",
+   "title": "IOQM 2021 · Parts A & B",
+   "note": "Part B is proof-based — closest IOQM ever got to RMO",
+   "links": {
+    "Part A": "https://olympiads.hbcse.tifr.res.in/wp-content/uploads/2022/07/IOQM2021_partA_final.pdf",
+    "Part B + solutions": "https://olympiads.hbcse.tifr.res.in/wp-content/uploads/2022/07/Part_B_2022_Solutions_revised.pdf"
+   }
+  }
+ ]
+}

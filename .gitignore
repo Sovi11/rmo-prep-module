@@ -1,0 +1,7 @@
+# Personal study progress — notes, flags and scores stay local.
+user-data/
+
+__pycache__/
+*.pyc
+.DS_Store
+.venv/
