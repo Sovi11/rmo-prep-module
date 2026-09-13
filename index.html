@@ -24,8 +24,7 @@
     <div class="countdown" id="countdown"></div>
     <nav class="nav" id="nav"></nav>
     <div class="sidebar-foot">
-      <button class="chip-btn" id="themeBtn" title="Toggle theme">◐ Theme</button>
-      <a class="chip-btn" href="#/settings">Data</a>
+      <a class="chip-btn" href="#/settings">Data &amp; backup</a>
       <span class="save-dot" id="saveDot" title="Saved"></span>
     </div>
   </aside>
@@ -37,6 +36,18 @@
       <div class="topbar-actions">
         <button class="search-btn" id="searchBtn">
           <span>⌕</span><span>Search everything</span><kbd>⌘K</kbd>
+        </button>
+        <button class="theme-toggle" id="themeBtn" title="Switch between light and dark" aria-label="Toggle theme">
+          <span class="tt-track">
+            <span class="tt-thumb"></span>
+            <svg class="tt-ico tt-sun" viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="12" cy="12" r="4.2"/>
+              <g stroke-linecap="round"><path d="M12 2.4v2.6M12 19v2.6M4.2 4.2l1.9 1.9M17.9 17.9l1.9 1.9M2.4 12h2.6M19 12h2.6M4.2 19.8l1.9-1.9M17.9 6.1l1.9-1.9"/></g>
+            </svg>
+            <svg class="tt-ico tt-moon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M20.5 14.6A8.6 8.6 0 1 1 9.4 3.5a6.9 6.9 0 0 0 11.1 11.1z"/>
+            </svg>
+          </span>
         </button>
       </div>
     </div>

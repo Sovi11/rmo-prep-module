@@ -883,14 +883,15 @@ function route() {
 
 /* ===================== boot ===================== */
 
-function applyTheme(t) {
+function applyTheme(t, persist = true) {
   document.documentElement.dataset.theme = t;
-  store.setSetting('theme', t);
+  document.documentElement.style.colorScheme = t;
+  if (persist) store.setSetting('theme', t);
 }
 
 async function boot() {
   await store.init();
-  applyTheme(store.settings.theme || 'dark');
+  applyTheme(store.settings.theme || 'dark', false);
   await loadLibrary();
   renderSidebar();
   route();                           // paint immediately with what we have
