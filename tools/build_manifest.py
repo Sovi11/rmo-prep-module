@@ -4,7 +4,7 @@
 Run this after adding or renaming a chapter:
     python3 tools/build_manifest.py
 """
-import json, os, re, sys
+import hashlib, json, os, re, sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CONTENT = os.path.join(ROOT, "web", "content")
@@ -255,6 +255,50 @@ def read_meta(path):
     return meta, n_problems
 
 
+ASSET_JS = ["md.js", "store.js", "content.js", "app.js"]
+
+
+def stamp_assets():
+    """Give every own asset a ?v=<hash> so browsers can never serve a stale module.
+
+    ES modules are cached per-URL and survive a normal reload, so editing a file
+    without changing its URL leaves the old code running. Rewriting the version
+    query on each build is idempotent and fixes that.
+    """
+    web = os.path.join(ROOT, "web")
+    js_dir = os.path.join(web, "assets", "js")
+    css = os.path.join(web, "assets", "css", "styles.css")
+
+    h = hashlib.sha1()
+    for path in [os.path.join(js_dir, f) for f in ASSET_JS] + [css]:
+        with open(path, "rb") as fh:
+            h.update(re.sub(rb"\?v=[0-9a-f]{8}", b"", fh.read()))
+    ver = h.hexdigest()[:8]
+
+    # 1. import specifiers inside the modules
+    for f in ASSET_JS:
+        path = os.path.join(js_dir, f)
+        with open(path, encoding="utf-8") as fh:
+            src = fh.read()
+        new = re.sub(r"(from\s+'\./)([\w-]+\.js)(\?v=[0-9a-f]{8})?(')",
+                     lambda m: f"{m.group(1)}{m.group(2)}?v={ver}{m.group(4)}", src)
+        if new != src:
+            with open(path, "w", encoding="utf-8") as fh:
+                fh.write(new)
+
+    # 2. the entry points in index.html
+    idx = os.path.join(web, "index.html")
+    with open(idx, encoding="utf-8") as fh:
+        html = fh.read()
+    html = re.sub(r'(href="assets/css/styles\.css)(\?v=[0-9a-f]{8})?(")',
+                  lambda m: f"{m.group(1)}?v={ver}{m.group(3)}", html)
+    html = re.sub(r'(src="assets/js/app\.js)(\?v=[0-9a-f]{8})?(")',
+                  lambda m: f"{m.group(1)}?v={ver}{m.group(3)}", html)
+    with open(idx, "w", encoding="utf-8") as fh:
+        fh.write(html)
+    return ver
+
+
 def main():
     sections, missing, total_problems = [], [], 0
     for sec in SECTIONS:
@@ -283,7 +327,9 @@ def main():
         json.dump(out, fh, indent=1, ensure_ascii=False)
 
     built = sum(len(s["chapters"]) for s in sections)
-    print(f"manifest: {built} chapters, {total_problems} problems, {len(PAPERS)} paper entries")
+    ver = stamp_assets()
+    print(f"manifest: {built} chapters, {total_problems} problems, "
+          f"{len(PAPERS)} paper entries, assets v={ver}")
     if missing:
         print(f"  still to write ({len(missing)}): " + ", ".join(missing))
     return 0

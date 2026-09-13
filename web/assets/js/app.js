@@ -1,6 +1,6 @@
-import { md, plain } from './md.js';
-import { store, STATUSES } from './store.js';
-import { library, loadLibrary, loadChapter, loadAll } from './content.js';
+import { md, plain } from './md.js?v=f753230f';
+import { store, STATUSES, HABITS, today, shiftDay } from './store.js?v=f753230f';
+import { library, loadLibrary, loadChapter, loadAll } from './content.js?v=f753230f';
 
 const EXAM_DATE = new Date('2026-11-15T13:00:00+05:30');
 const $ = s => document.querySelector(s);
@@ -67,6 +67,10 @@ function renderSidebar() {
 
   let html = `<div class="nav-group">
     ${item('#/', '◈', 'Dashboard')}
+    ${item('#/today', '◉', 'Today', (() => {
+      const t = store.solvedOn(today()), g = store.settings.dailyTarget || 4;
+      return `${t}/${g}`;
+    })())}
     ${item('#/plan', '◷', 'The 9-week plan')}
     ${item('#/bank', '≣', 'Problem bank')}
     ${item('#/papers', '▤', 'Past papers')}
@@ -84,6 +88,167 @@ function renderSidebar() {
 }
 
 /* ===================== views ===================== */
+
+
+/* ===================== daily tracker ===================== */
+
+const PLAN_START = '2026-09-12';
+const EXAM_DAY   = '2026-11-15';
+
+/** The problems to do today: next unfinished ones from this week's chapters. */
+function todaysQueue(n) {
+  const week = currentWeek();
+  if (!ALL || !week) return [];
+  const ids = (week.chapters || []);
+  const pool = [];
+  for (const cid of ids) {
+    const ch = ALL.find(c => c.id === cid);
+    if (!ch) continue;
+    for (const p of problemsOf(ch)) pool.push({ ...p, chTitle: ch.title });
+  }
+  // anything already finished today stays visible (so the list doesn't jump around)
+  const doneToday = pool.filter(p => store.problem(p.id).solvedOn === today());
+  const open = pool
+    .filter(p => !['solved', 'hinted'].includes(store.problem(p.id).status))
+    .sort((a, b) => a.diffRank - b.diffRank);
+  return [...doneToday, ...open].slice(0, Math.max(n, doneToday.length));
+}
+
+function ring(done, target) {
+  const pct = target ? Math.min(1, done / target) : 0;
+  const R = 34, C = 2 * Math.PI * R;
+  const hit = done >= target;
+  return `<svg class="ring" viewBox="0 0 80 80" width="80" height="80" aria-hidden="true">
+    <circle cx="40" cy="40" r="${R}" class="ring-bg"/>
+    <circle cx="40" cy="40" r="${R}" class="ring-fg ${hit ? 'hit' : ''}"
+      stroke-dasharray="${C}" stroke-dashoffset="${C * (1 - pct)}"/>
+    <text x="40" y="38" class="ring-num">${done}</text>
+    <text x="40" y="52" class="ring-den">/ ${target}</text>
+  </svg>`;
+}
+
+function heatmap() {
+  const act = store.activity(PLAN_START, EXAM_DAY);
+  const t = today();
+  // pad to whole weeks starting Monday
+  const start = (() => { let d = PLAN_START;
+    while (new Date(d + 'T00:00').getDay() !== 1) d = shiftDay(d, -1); return d; })();
+
+  const cells = [];
+  for (let d = start; d <= EXAM_DAY; d = shiftDay(d, 1)) {
+    const inRange = d >= PLAN_START;
+    const v = act[d] ?? 0;
+    const target = store.settings.dailyTarget || 4;
+    let lvl = 0;
+    if (v > 0) lvl = v >= target ? 3 : (v >= Math.ceil(target / 2) ? 2 : 1);
+    cells.push(`<i class="hm-c l${inRange ? lvl : -1} ${d === t ? 'is-today' : ''} ${d === EXAM_DAY ? 'is-exam' : ''}"
+      title="${d}${inRange ? ` · ${v} problem${v === 1 ? '' : 's'}` : ''}"></i>`);
+  }
+  return `<div class="hm">${cells.join('')}</div>`;
+}
+
+function viewToday() {
+  const t = today();
+  const target = store.settings.dailyTarget || 4;
+  const doneToday = store.solvedOn(t);
+  const streak = store.streak();
+  const day = store.day();
+  const week = currentWeek();
+  const queue = todaysQueue(target);
+  const d = daysLeft();
+  const dateLabel = new Date(t + 'T00:00').toLocaleDateString(undefined,
+    { weekday: 'long', day: 'numeric', month: 'long' });
+
+  view().innerHTML = `<div class="page">
+    <div class="page-head">
+      <div class="eyebrow">Today · ${esc(dateLabel)}</div>
+      <h1 class="page-title">${doneToday >= target
+        ? 'Target hit — anything else is a bonus.'
+        : `${target - doneToday} more problem${target - doneToday === 1 ? '' : 's'} to hit today's target.`}</h1>
+      <p class="page-lede">${d} days to RMO.${week ? ` This week: <b>${esc(week.title)}</b>.` : ''}</p>
+    </div>
+
+    <div class="today-grid">
+      <div class="card today-ring">
+        ${ring(doneToday, target)}
+        <div>
+          <div class="t-lbl">problems finished today</div>
+          <div class="t-streak">${streak > 0 ? `🔥 <b>${streak}</b> day streak` : 'no streak yet — today starts one'}</div>
+          <div class="seg" id="targetSeg" style="margin-top:10px">
+            ${[2, 3, 4, 5, 6].map(v => `<button data-v="${v}" class="${v === target ? 'on' : ''}">${v}</button>`).join('')}
+          </div>
+          <div class="kbd-hint" style="margin-top:5px">daily target</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">⏱ Time on task today</div>
+        <div class="t-mins"><b id="minsVal">${day.minutes}</b> <span>minutes</span></div>
+        <div style="display:flex;gap:6px;margin-top:10px;flex-wrap:wrap" id="minBtns">
+          <button class="chip-btn" data-m="15">+15</button>
+          <button class="chip-btn" data-m="30">+30</button>
+          <button class="chip-btn" data-m="60">+60</button>
+          <button class="chip-btn" data-m="-15">−15</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-bottom:16px">
+      <div class="card-title">Today's queue — picked from this week's chapters</div>
+      ${queue.length ? `<div id="queue">${queue.map(p => {
+        const rec = store.problem(p.id);
+        const done = ['solved', 'hinted'].includes(rec.status);
+        return `<a class="q-row ${done ? 'done' : ''}" href="#/chapter/${p.chapterId}?p=${encodeURIComponent(p.id)}">
+          <span class="q-box">${done ? '✓' : '○'}</span>
+          <span class="grow">
+            <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+              <b style="font-family:var(--mono);font-size:12.5px">${esc(p.label)}</b>
+              <span class="chip d-${esc(p.difficulty)}">${esc(p.difficulty)}</span>
+              <span class="sub">${esc(p.chTitle)}</span>
+            </div>
+            <div class="q-txt">${esc(plain(p.statement).slice(0, 130))}…</div>
+          </span>
+        </a>`;
+      }).join('')}</div>`
+      : '<div class="empty" style="padding:26px">This week’s chapters are all done. Pick anything from the <a href="#/bank">problem bank</a>.</div>'}
+    </div>
+
+    <div class="card" style="margin-bottom:16px">
+      <div class="card-title">Daily habits</div>
+      <div id="habits">
+        ${HABITS.map(h => `<button class="habit ${day.habits[h.id] ? 'on' : ''}" data-h="${h.id}">
+          <span class="q-box">${day.habits[h.id] ? '✓' : '○'}</span><span>${esc(h.label)}</span>
+        </button>`).join('')}
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">The run to 15 November</div>
+      ${heatmap()}
+      <div class="hm-key">
+        <span>less</span><i class="hm-c l0"></i><i class="hm-c l1"></i><i class="hm-c l2"></i><i class="hm-c l3"></i><span>more</span>
+        <span style="margin-left:auto">green = target met that day</span>
+      </div>
+    </div>
+  </div>`;
+
+  $('#targetSeg').onclick = e => {
+    const b = e.target.closest('button'); if (!b) return;
+    store.setSetting('dailyTarget', +b.dataset.v);
+    viewToday();
+  };
+  $('#minBtns').onclick = e => {
+    const b = e.target.closest('button'); if (!b) return;
+    store.addMinutes(+b.dataset.m);
+    $('#minsVal').textContent = store.day().minutes;
+  };
+  $('#habits').onclick = e => {
+    const b = e.target.closest('.habit'); if (!b) return;
+    const on = store.toggleHabit(b.dataset.h);
+    b.classList.toggle('on', on);
+    b.querySelector('.q-box').textContent = on ? '✓' : '○';
+  };
+}
 
 function viewDashboard() {
   const d = daysLeft();
@@ -131,6 +296,22 @@ function viewDashboard() {
       <p class="page-lede">Six proof problems, three hours, Sunday 15 November. Everything you need is in this app:
       theory, worked examples, graded problem sets, and every official past paper.</p>
     </div>
+
+    <a class="card today-strip" href="#/today">
+      ${ring(store.solvedOn(today()), store.settings.dailyTarget || 4)}
+      <span class="grow">
+        <div style="font-size:15px;font-weight:700">Today's goal</div>
+        <div class="sub" style="margin-top:3px">
+          ${store.solvedOn(today()) >= (store.settings.dailyTarget || 4)
+            ? 'Target hit for today.'
+            : `${(store.settings.dailyTarget || 4) - store.solvedOn(today())} more to go.`}
+          ${store.streak() > 0 ? ` · 🔥 ${store.streak()} day streak` : ''}
+          · ${store.day().minutes} min logged
+        </div>
+        <div style="margin-top:9px">${heatmap()}</div>
+      </span>
+      <span class="t-go">Open →</span>
+    </a>
 
     <div class="grid grid-4" style="margin-bottom:18px">
       <div class="card stat">
@@ -843,7 +1024,7 @@ const closeSearch = () => { $('#modal').innerHTML = ''; };
 function crumbs() {
   const h = location.hash.slice(2).split('?')[0];
   const parts = h.split('/');
-  const map = { '': 'Dashboard', plan: 'The 9-week plan', bank: 'Problem bank', papers: 'Past papers', notes: 'Notes', settings: 'Settings' };
+  const map = { '': 'Dashboard', today: 'Today', plan: 'The 9-week plan', bank: 'Problem bank', papers: 'Past papers', notes: 'Notes', settings: 'Settings' };
   let out = '<a href="#/"><b>RMO Prep</b></a>';
   if (parts[0] === 'chapter') {
     const c = library.byId.get(parts[1]);
@@ -868,6 +1049,7 @@ function route() {
 
   switch (parts[0]) {
     case '':         viewDashboard(); break;
+    case 'today':    viewToday(); break;
     case 'plan':     viewPlan(); break;
     case 'bank':     viewBank(query); break;
     case 'papers':   viewPapers(); break;

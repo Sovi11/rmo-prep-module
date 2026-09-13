@@ -127,9 +127,9 @@ class Handler(SimpleHTTPRequestHandler):
         return self._json({"ok": True, "savedAt": state["savedAt"]})
 
     def end_headers(self):
-        # content is edited live while studying; never let the browser cache it
-        if urlparse(self.path).path.startswith(("/content/", "/api/")):
-            self.send_header("Cache-Control", "no-store")
+        # Everything here is edited live while studying, and the app is tiny, so
+        # never let the browser serve a stale copy.
+        self.send_header("Cache-Control", "no-store, must-revalidate")
         super().end_headers()
 
     def log_message(self, fmt, *args):
