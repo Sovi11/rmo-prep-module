@@ -1,6 +1,6 @@
 /* Loads and parses the chapter markdown files listed in content/manifest.json. */
 
-import { plain } from './md.js';
+import { plain } from './md.js?v=f753230f';
 
 const cache = new Map();
 
