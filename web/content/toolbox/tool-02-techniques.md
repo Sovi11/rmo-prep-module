@@ -62,13 +62,84 @@ Typical extremal choices: the largest element, the smallest counterexample, the 
 
 ## 4. WLOG and symmetry
 
-"Without loss of generality" is a promise that relabelling does not change the problem. It is legitimate exactly when the hypothesis *and* conclusion are invariant under the relabelling you are performing.
+"Without loss of generality" is a promise that **relabelling the variables does not change the problem**. When that promise is true, you may assume a convenient arrangement and the argument still covers every case. When it is false, you have quietly proved a special case and thrown away the rest.
 
-- Legitimate: "The expression is symmetric in $a,b,c$, so WLOG $a \ge b \ge c$."
-- Legitimate: "Both conditions are unchanged by scaling, so WLOG $a+b+c = 1$." (Normalisation.)
-- **Not** legitimate: "WLOG $a \ge b \ge c$" when the expression is only *cyclic* — invariant under $a \to b \to c \to a$ but not under swapping $a$ and $b$. In a cyclic problem you may assume $a = \max$, but not a full ordering.
+So the question to ask every single time is: *which relabellings genuinely leave this problem alone?*
 
-That last distinction eats a surprising number of inequality solutions.
+### Symmetric versus cyclic — the distinction that matters
+
+An expression in $a,b,c$ is:
+
+- **symmetric** if it is unchanged by **every** rearrangement of $a,b,c$ — including swapping just two of them;
+- **cyclic** if it is unchanged only by the rotation $a\to b\to c\to a$.
+
+Every symmetric expression is cyclic. The reverse is false, and that gap is where solutions go wrong.
+
+**How to test, in thirty seconds.** Do not reason about it — *substitute numbers*. Take $(a,b,c)=(1,2,3)$ and compare with the swap $(2,1,3)$ and the rotation $(2,3,1)$.
+
+Take $E = a^2b+b^2c+c^2a$:
+
+| substitution | computation | value |
+|---|---|---|
+| original $(1,2,3)$ | $1^2\!\cdot\!2 + 2^2\!\cdot\!3 + 3^2\!\cdot\!1 = 2+12+9$ | $23$ |
+| **rotate** to $(2,3,1)$ | $2^2\!\cdot\!3+3^2\!\cdot\!1+1^2\!\cdot\!2 = 12+9+2$ | $23$ ← unchanged |
+| **swap $a,b$** to $(2,1,3)$ | $2^2\!\cdot\!1+1^2\!\cdot\!3+3^2\!\cdot\!2 = 4+3+18$ | $25$ ← **changed** |
+
+The rotation preserved it; the swap did not. So $E$ is **cyclic but not symmetric**.
+
+Compare $S = a^2b+b^2c+c^2a + ab^2+bc^2+ca^2$, which *is* symmetric: every swap leaves it alone too. And $a+b+c$, $abc$, $a^2+b^2+c^2$ are all symmetric.
+
+### Why the difference changes what you may assume
+
+There are six possible orderings of three distinct numbers:
+$$a\ge b\ge c, \quad b\ge c\ge a, \quad c\ge a\ge b, \qquad a\ge c\ge b, \quad c\ge b\ge a, \quad b\ge a\ge c.$$
+
+**If the problem is symmetric**, all six are interchangeable — any relabelling turns one into another. So proving the case $a\ge b\ge c$ really does prove all six, and
+> "WLOG $a\ge b\ge c$" ✓ **legitimate.**
+
+**If the problem is only cyclic**, the rotation $a\to b\to c\to a$ splits those six orderings into **two separate groups of three**:
+$$\underbrace{\{\,a\ge b\ge c,\ \ b\ge c\ge a,\ \ c\ge a\ge b\,\}}_{\text{rotations of one another}} \qquad \underbrace{\{\,a\ge c\ge b,\ \ c\ge b\ge a,\ \ b\ge a\ge c\,\}}_{\text{rotations of one another}}$$
+
+Rotating moves you *within* a group but never *between* them. So assuming $a\ge b\ge c$ covers the first group and says **nothing at all** about the second — you would have proved half the problem.
+
+What you *may* legitimately say in a cyclic problem is:
+> "WLOG $a = \max\{a,b,c\}$" ✓ — because you can always rotate the largest variable into the first slot.
+
+And then you must still handle **both** remaining cases, $b\ge c$ and $c\ge b$, separately.
+
+### Seeing it fail on a real inequality
+
+Here is a cyclic inequality where the ordering genuinely decides the answer. For positive reals,
+$$\frac ab+\frac bc+\frac ca \qquad\text{versus}\qquad \frac ba+\frac cb+\frac ac.$$
+
+Try $(a,b,c) = (3,2,1)$, so $a\ge b\ge c$:
+$$\frac32+\frac21+\frac13 \approx 3.833 \qquad\text{versus}\qquad \frac23+\frac12+\frac31 \approx 4.167,$$
+so the **first is smaller**.
+
+Now try $(a,b,c) = (3,1,2)$, so $a\ge c\ge b$ — the *other* group:
+$$\frac31+\frac12+\frac23\approx 4.167 \qquad\text{versus}\qquad \frac13+\frac21+\frac32 \approx 3.833,$$
+and now the **first is larger**. The inequality has flipped.
+
+So here "WLOG $a\ge b\ge c$" would not merely be sloppy — it would prove a statement that is *false* in the other half of the cases. A marker who notices this removes most of the credit, and rightly.
+
+### Other legitimate WLOGs
+
+- **Scaling (normalisation).** If both sides of an inequality are homogeneous of the same degree, multiplying $a,b,c$ by $t>0$ multiplies both sides by $t^d$ and changes nothing. So:
+> "The inequality is homogeneous of degree 3, so we may scale so that $a+b+c=1$." ✓
+
+  This is **not** allowed if the inequality is not homogeneous — then scaling changes the two sides by different amounts. Homogenise first using the given constraint.
+
+- **Reflection or relabelling in geometry.** "WLOG $B$ lies between $C$ and $D$" is fine only if the hypotheses do not distinguish them; if the problem says $AB<AC$, then $B$ and $C$ are *not* interchangeable and you may not swap them.
+
+- **Choosing coordinates.** "Place $B$ at the origin with $BC$ along the $x$-axis" ✓ — a rotation and translation change no distance or angle.
+
+### The habit to build
+
+Before writing "WLOG", finish this sentence out loud:
+
+> *"…because the hypotheses and the conclusion are both unchanged when I ________."*
+
+If you can fill the blank with a specific operation (swap $a$ and $b$ / rotate / scale by $t$ / reflect), the WLOG is legitimate — **and you should write that reason down**, because it is worth a mark and it is the step markers check. If you cannot fill the blank, you are about to lose most of the problem.
 
 ## 5. Invariance and monovariance
 

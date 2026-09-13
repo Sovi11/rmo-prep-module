@@ -248,7 +248,10 @@ def read_meta(path):
             kv = re.match(r"^([\w-]+):\s*(.*)$", line)
             if kv and kv.group(1) not in ("video", "sheet", "link"):
                 meta[kv.group(1)] = kv.group(2).strip()
-    n_problems = len(re.findall(r"^###\s", raw, re.M))
+    # only headings *after* the "## Problems" marker are problems; "###" is also
+    # used for sub-sections inside the theory, which must not be counted.
+    idx = raw.find("\n## Problems")
+    n_problems = len(re.findall(r"^###\s", raw[idx:], re.M)) if idx != -1 else 0
     return meta, n_problems
 
 
