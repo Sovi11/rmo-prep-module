@@ -210,30 +210,26 @@ $$MB = MI. \;✓$$
 ### P6 | Medium | CRMO 2013 P1
 Let $ABC$ be an acute-angled triangle. The circle $\Gamma$ with $BC$ as diameter meets $AB$ and $AC$ again at $P$ and $Q$ respectively. Determine $\angle BAC$ given that the orthocentre of triangle $APQ$ lies on $\Gamma$.
 [hint]
-$BC$ is a diameter, so $\angle BPC = \angle BQC = 90^\circ$ — meaning $CP$ and $BQ$ are altitudes of $ABC$. Identify the orthocentre of $APQ$ and impose the condition.
+$BC$ is a diameter, so $\angle BPC = \angle BQC = 90^\circ$. Let $H'$ be the orthocentre of $APQ$ — it is **not** the orthocentre of $ABC$. Compute $\angle PH'Q$ (it is $180^\circ - A$, by P3) and compare with the angle that chord $PQ$ subtends on $\Gamma$ from $B$.
 [/hint]
 [sol]
 **Setup.** Since $BC$ is a diameter of $\Gamma$ and $P, Q \in\Gamma$,
-$$\angle BPC = \angle BQC = 90^\circ.$$
-So $CP \perp AB$ and $BQ\perp AC$: the segments $CP$ and $BQ$ are the altitudes of triangle $ABC$ from $C$ and $B$. Let $H$ be their intersection — the orthocentre of $ABC$.
+$$\angle BPC = \angle BQC = 90^\circ,$$
+so $CP \perp AB$ and $BQ\perp AC$. Also $B, P, Q, C$ all lie on $\Gamma$, so $BPQC$ is cyclic, and its exterior angles give
+$$\angle APQ = \angle ACB = C, \qquad \angle AQP = \angle ABC = B.$$
+So triangle $APQ$ has the same angles as $ABC$; in particular it is acute, and its orthocentre $H'$ lies inside it, on the same side of line $PQ$ as $A$.
 
-**The orthocentre of $APQ$.** In triangle $APQ$:
-- $P$ lies on $AB$ and $Q$ on $AC$;
-- $BQ \perp AC = AQ$, so the line $BQ$ is the altitude of $APQ$ from $Q$;
-- $CP\perp AB = AP$, so the line $CP$ is the altitude of $APQ$ from $P$.
+**The trap.** $H'$ is **not** the orthocentre $H$ of $ABC$. The line $CP$ is perpendicular to $AB = AP$ — a side of $APQ$ *through* $P$ — whereas the altitude of $APQ$ from $P$ must be perpendicular to the *opposite* side $AQ$. So $CP$ and $BQ$ are altitudes of $ABC$ only, and $H \ne H'$ in general. Work with $H'$ directly.
 
-These two altitudes meet at $H$, so **$H$ is also the orthocentre of $APQ$.**
+**The angle at $H'$.** By P3 of this set, applied to the acute triangle $APQ$,
+$$\angle PH'Q = 180^\circ - \angle PAQ = 180^\circ - A.$$
 
-**Impose the condition.** We are told $H \in \Gamma$, and $BC$ is a diameter of $\Gamma$, so
-$$\angle BHC = 90^\circ.$$
+**The same angle on $\Gamma$.** We are told $H'\in\Gamma$, so $P, B, H', Q$ are concyclic. Since $P$ lies on segment $AB$, the line $PQ$ separates $A$ from $B$, and $H'$ is on $A$'s side; so $B$ and $H'$ are on opposite arcs of the chord $PQ$, and
+$$\angle PH'Q = 180^\circ - \angle PBQ.$$
+Now $\angle PBQ = \angle ABQ$ (as $P$ is on ray $BA$), and in the right triangle $ABQ$ this is $90^\circ - A$. Hence
+$$\angle PH'Q = 90^\circ + A.$$
 
-**Finish with the orthocentre angle formula.** By P3 of this set,
-$$\angle BHC = 180^\circ - \angle BAC.$$
-
-Therefore
-$$180^\circ - \angle BAC = 90^\circ \implies \angle BAC = \mathbf{45^\circ}. \;∎$$
-
-*(Consistency: for $\angle A = 45^\circ$ and the triangle acute, $H$ is interior and the configuration is realisable.)*
+**Finish.** $180^\circ - A = 90^\circ + A$ gives $\angle BAC = \mathbf{45^\circ}$. Conversely, when $A = 45^\circ$ the two expressions agree ($135^\circ$), so $H'$ really does lie on $\Gamma$: the condition holds exactly for $\angle BAC = 45^\circ$. ∎
 [/sol]
 
 ### P7 | Medium | Standard

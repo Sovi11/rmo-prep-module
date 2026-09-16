@@ -199,15 +199,14 @@ For integer roots the discriminants must be perfect squares:
 $$m^2 + 4n = a^2, \qquad m^2 - 4n = b^2$$
 for some non-negative integers $a, b$.
 
-**Divisibility by 2.** Adding, $a^2+b^2 = 2m^2$; subtracting, $a^2 - b^2 = 8n$.
+**Divisibility by 2.** Split on the parity of $m$.
 
-From $a^2+b^2 = 2m^2$, $a$ and $b$ have the same parity. If both were odd, $a^2-b^2 \equiv 1 - 1 = 0 \pmod 8$ — consistent. If both even, also $8 \mid a^2-b^2$? Write $a=2a'$, $b=2b'$: $a^2-b^2 = 4(a'^2-b'^2)$, and $a'^2 - b'^2$ is even iff $a',b'$ have the same parity, which follows from $a'^2+b'^2 = m^2/2$ being an integer forcing $m$ even and then $a'^2+b'^2$ even. Either way $8 \mid a^2 - b^2 = 8n$ is automatic; we need a sharper route for $2 \mid n$.
+- *$m$ odd.* Then $a^2 = m^2+4n$ is odd, so $a$ is odd and $a^2 \equiv 1 \equiv m^2 \pmod 8$ (odd squares are $1$ mod $8$). Hence $4n = a^2 - m^2 \equiv 0 \pmod 8$, so $n$ is even.
+- *$m$ even*, say $m = 2k$. Then $a^2 = 4k^2+4n$ and $b^2 = 4k^2 - 4n$ are even squares, so $a = 2u$, $b = 2v$ with
+$$u^2 = k^2+n, \qquad v^2 = k^2-n.$$
+Adding, $u^2+v^2 = 2k^2$ is even, so $u \equiv v \pmod 2$. Then both $u-v$ and $u+v$ are even, so $4 \mid (u-v)(u+v) = u^2-v^2 = 2n$, and again $n$ is even.
 
-Instead argue directly. Let the roots of $x^2+mx-n$ be $p,q$ and of $x^2-mx+n$ be $r,s$, all integers. By Vieta,
-$$p+q = -m, \quad pq = -n, \qquad r+s = m, \quad rs = n.$$
-So $pq = -rs$ and $p + q = -(r+s)$.
-
-**Mod 2.** $pq + rs = 0$ is even, and $p+q+r+s = 0$ is even. If $n = rs$ were odd, then $r,s$ both odd, so $r+s$ even, so $m$ even, so $p+q$ even; and $pq = -n$ odd forces $p, q$ both odd, consistent. So parity alone is not enough — use the discriminants: $m^2+4n$ and $m^2-4n$ are squares. If $m$ is even, $m^2 \equiv 0 \pmod 4$, so $4n \equiv a^2 \pmod 4$ forces $a$ even, fine. If $m$ is odd, $m^2 \equiv 1 \pmod 8$, and $m^2 \pm 4n$ are odd squares, so both $\equiv 1 \pmod 8$, giving $4n \equiv 0 \pmod 8$, i.e. $n$ even. If $m$ even, write $m = 2m'$: then $4m'^2 \pm 4n$ are squares, so $m'^2 \pm n$ are squares; their sum is $2m'^2$, so the two squares have equal parity, and their difference $2n$ is divisible by... taking $u^2 = m'^2+n$, $v^2 = m'^2-n$ with $u,v$ same parity, $u^2-v^2 = 2n$ and $u^2-v^2$ is divisible by 8 when $u,v$ are both even, by 8 when both odd. Hence $8 \mid 2n$, so $4 \mid n$; in particular $2 \mid n$.
+Either way, $2 \mid n$.
 
 **Mod 3.** Squares mod 3 are $0,1$. From $a^2 = m^2+4n \equiv m^2+n$ and $b^2 = m^2-4n \equiv m^2 - n \pmod 3$. Adding, $a^2+b^2 \equiv 2m^2 \pmod 3$.
 
@@ -303,7 +302,7 @@ $$a^2 + b^2 + c^2 + d^2 \;=\; 2025\,ab, \qquad\text{where } ab = cd. \tag{2}$$
 **Step 4: work modulo 3.** Since $2025 = 3^4 \cdot 5^2$, the right-hand side of (2) is divisible by 3:
 $$a^2+b^2+c^2+d^2 \equiv 0 \pmod 3.$$
 
-Squares modulo 3 are $0$ or $1$. Because $\gcd(a,b) = 1$, the primes 3 cannot divide both $a$ and $b$, so $a^2+b^2 \not\equiv 0 \pmod 3$; that is,
+Squares modulo 3 are $0$ or $1$. Because $\gcd(a,b) = 1$, the prime $3$ cannot divide both $a$ and $b$, so $a^2+b^2 \not\equiv 0 \pmod 3$; that is,
 $$a^2+b^2 \equiv 1 \text{ or } 2 \pmod 3,$$
 and likewise $c^2+d^2 \equiv 1$ or $2 \pmod 3$.
 

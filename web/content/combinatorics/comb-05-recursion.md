@@ -240,7 +240,7 @@ $$\sum_v\binom{\deg v}{2} = 3T+P. \;∎$$
 **Why it is useful.** Since $P \ge 0$, this immediately gives the bound $T \le \frac13\sum_v\binom{\deg v}{2}$ — a standard first step in problems asking to bound the number of triangles in a graph.
 [/sol]
 
-### P10 | Hard | RMO 2024 P6 (adapted)
+### P10 | Hard | RMO 2024 P6
 For $n \ge 2$, call a sequence $1 = a_1 < a_2<\cdots<a_k = n$ an **$n$-chain** if $a_i \mid a_{i+1}$ for every $i$. Let $f(n)$ be the number of $n$-chains. Prove that $f(2^m\cdot3) = 2^{m-1}(m+2)$ for every positive integer $m$.
 [hint]
 A chain from 1 to $n$ is determined by the sequence of quotients $a_{i+1}/a_i$, whose product is $n$ — so $f(n)$ counts ordered factorisations of $n$ into factors $>1$. Set up a recursion on the exponent, or count directly by where the factor 3 appears.

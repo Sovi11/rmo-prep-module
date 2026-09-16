@@ -44,8 +44,9 @@ $$3^6 = 729.$$
 
 **Remove $A = B$.** This happens only when every one of the six elements is "in neither", i.e. $A = B = \{2,3,5,7\}$ — exactly one ordered pair. So $729-1 = 728$ ordered pairs have $A\ne B$.
 
-**Unordered.** Each unordered pair $\{A,B\}$ with $A \ne B$ corresponds to exactly two ordered pairs, so the answer is
-$$\frac{728}{2} = \mathbf{364}. \;∎$$
+**Ordered or unordered?** The official HBCSE solution stops here and gives $\mathbf{728}$ — it counts *ordered* pairs $(A,B)$, i.e. assignments of each free element to "$A$ only", "$B$ only" or "neither". If instead $\{A,B\}$ is read literally as an *unordered* pair, each such pair with $A \ne B$ corresponds to exactly two ordered pairs, and the count is
+$$\frac{728}{2} = 364.$$
+The whole mathematical content is the $3^6$ step; in an exam, **say explicitly which you are counting** and you will be marked on the argument. ∎
 [/sol]
 
 ### C2 | Easy | CRMO 2016 P4
@@ -182,8 +183,8 @@ $$S_k = \frac{k(k+1)}{2} = k\cdot\frac{k+1}{2},$$
 and since $k$ is even, $\frac{k+1}{2}$ is **not** an integer — indeed $S_k/k = \frac{k+1}{2}$ is a half-integer, so $k \nmid S_k$ ✓.
 
 - **$k$ odd**, say $k = 2j+1$ with $j\ge1$: the first $2j$ terms give $\frac{2j(2j+1)}{2}$, and the next term $a_{2j+1} = 2j+2$. So
-$$S_k = \frac{(k-1)k}{2} + (k+1) = \frac{k(k+1)}{2}+1 \cdot\!$$
-let us compute directly: $\frac{(k-1)k}{2}+(k+1)$. Modulo $k$, the first term is $\frac{(k-1)k}{2}\equiv0$ (as $k$ is odd, $\frac{k-1}{2}$ is an integer), and the second is $k+1\equiv1$. Hence
+$$S_k = \frac{(k-1)k}{2} + (k+1) = \frac{k(k+1)}{2}+1.$$
+Modulo $k$, the first term is $\frac{(k-1)k}{2}\equiv0$ (as $k$ is odd, $\frac{k-1}{2}$ is an integer), and the second is $k+1\equiv1$. Hence
 $$S_k \equiv 1 \pmod k,$$
 which is not $0$ for $k>1$ ✓.
 
@@ -232,7 +233,19 @@ For **$n=9$** and a target of 10 points, it is $\binom92-10 = 36-10 = 26$.
 $$28 - \left[\binom72-1\right] = 28-20 = 8 \text{ points,}$$
 which is the near-pencil answer $n = 8$ ✓. To get 9 you need a saving of exactly 19 — one *less* than the 7-pencil provides — so the configuration must mix a smaller pencil with parallel classes and/or extra triple points, and finding the right mixture is the real content of part (b).
 
-**Honest note.** Part (b) is a genuine construction puzzle with several valid answers, and the explicit pictures are best read from the official write-up:
+**(b)(i) $n = 8$, exactly 9 points.** Take a parallelogram $ABCD$ and the eight lines: its four side-lines, its two diagonals, and the two **midlines** (the line through the midpoints of $AB$ and $CD$, and the line through the midpoints of $BC$ and $DA$).
+
+*The points.* The four vertices; the centre $O$, where both diagonals and both midlines concur; and the four side-midpoints, each the meeting of a side with a midline. That is $4+1+4 = 9$ points. Every other pair of lines is parallel: $\{AB,\ CD,\ \text{midline of } BC\text{–}DA\}$ and $\{BC,\ DA,\ \text{midline of } AB\text{–}CD\}$ are two parallel classes of three.
+
+*The count via savings.* Two parallel classes of 3 save $3+3$; the centre with 4 concurrent lines saves $\binom42-1 = 5$; each vertex has 3 concurrent lines (two sides and a diagonal), saving $2$ each, so $8$. Total $6+5+8 = 19 = 28 - 9$ ✓.
+
+**(b)(ii) $n = 9$, exactly 10 points.** Take a triangle $ABC$ with $D,E,F$ the midpoints of $BC, CA, AB$, and the nine lines: the three side-lines, the three midlines $EF, FD, DE$, and the three medians $AD, BE, CF$.
+
+*The points.* The three vertices (two sides and a median each); the three side-midpoints (a side, a median and two midlines each — e.g. $D$ lies on $BC$, $AD$, $FD$, $DE$); the centroid $G$ (three medians); and three more points where each median crosses the one midline it does not already meet at a midpoint (e.g. $AD$ crosses $EF$ at the midpoint of $EF$). That is $3+3+1+3 = 10$. The only parallel pairs are $BC\parallel EF$, $CA\parallel FD$, $AB\parallel DE$.
+
+*The count via savings.* Three parallel pairs save $3$; three vertices save $2$ each ($6$); three midpoints with 4 lines each save $5$ each ($15$); the centroid saves $2$. Total $3+6+15+2 = 26 = 36-10$ ✓.
+
+These are the official constructions; compare with:
 
 - [RMO 2025 paper](https://olympiads.hbcse.tifr.res.in/wp-content/uploads/2025/11/RMO-2025-Paper-1.pdf)
 - [RMO 2025 official solutions](https://olympiads.hbcse.tifr.res.in/wp-content/uploads/2025/12/RMO-2025-solutions.pdf)
@@ -301,7 +314,13 @@ $$s_{b+1}(i) = 2 - s_b(i) \qquad\text{for all } i=1,\dots,4,\ b=1,\dots,4. \tag{
 So each "adjacent-pair sum" alternates between $s_1(i)$ and $2-s_1(i)$ as $b$ increases, and in particular
 $$s_3(i) = s_1(i), \qquad s_5(i) = s_1(i). \tag{$\ast\ast$}$$
 
-**Case 1: some adjacent pair in row 1 is monochromatic**, i.e. $s_1(i)\in\{0,2\}$ for some $i$. Then by $(\ast)$, $s_2(i) = 2-s_1(i)$ is also in $\{0,2\}$ but the *opposite* value, so row 2 has that adjacent pair monochromatic in the other colour. Iterating, rows $1,3,5$ agree on that pair and rows $2,4$ carry the opposite colour. Now consider the side-2 square with corners $(i,1),(i+2,1),(i,3),(i+2,3)$ — its four vertices involve $r_1(i), r_1(i+2), r_3(i), r_3(i+2)$, and by $(\ast\ast)$ the row-3 values are strongly tied to row 1; a short check of the possible patterns produces a square with three equal colours.
+**Case 1: some adjacent pair in row 1 is monochromatic**, i.e. $s_1(i)\in\{0,2\}$ for some $i$. Then by $(\ast\ast)$, $s_3(i) = s_5(i) = s_1(i) \in\{0,2\}$, so that adjacent pair is monochromatic in the **same** colour in rows $1$, $3$ and $5$: $r_3(i) = r_5(i) = r_1(i)$.
+
+Now a key observation: **a row is determined by any one of its entries together with its adjacent-pair sums**, since $r_b(j+1) = s_b(j) - r_b(j)$ and $r_b(j-1) = s_b(j-1) - r_b(j)$. Rows 1 and 3 have the same pair-sums ($s_3 = s_1$) and agree at position $i$, so **rows 1 and 3 are identical**; the same reasoning gives row 5 $=$ row 1. So $r_1 = r_3 = r_5$.
+
+Look at the side-2 square with corners $(1,1),(3,1),(1,3),(3,3)$: its colours are $r_1(1), r_1(3), r_3(1), r_3(3) = r_1(1), r_1(3), r_1(1), r_1(3)$, and being 2–2 forces $r_1(1) \ne r_1(3)$. The square $(3,1),(5,1),(3,3),(5,3)$ likewise forces $r_1(3)\ne r_1(5)$. With two colours, $r_1(1) = r_1(5)$.
+
+Finally the side-4 square $(1,1),(5,1),(1,5),(5,5)$ has colours $r_1(1), r_1(5), r_5(1), r_5(5) = r_1(1), r_1(5), r_1(1), r_1(5)$ — all four equal. That is a monochromatic square, contradicting the 2–2 assumption.
 
 **Case 2: every adjacent pair in row 1 is bichromatic**, i.e. $s_1(i)=1$ for all $i$ — row 1 **alternates**: $r_1\in\{01010,\ 10101\}$. Then $(\ast)$ gives $s_b(i)=1$ for all $b$ and $i$, so **every row alternates**.
 
@@ -313,7 +332,7 @@ But $(\ast\ast)$ gives $s_5 = s_1$, which is consistent with either; so bring in
 
 **Contradiction.** So the assumption fails, and some axis-parallel square has at least three vertices of the same colour. ∎
 
-**Honest note.** Case 1 above is stated compactly; writing out its short case check in full is part of the work, and the [official RMO 2018 solutions](https://olympiads.hbcse.tifr.res.in/olympiads/wp-content/uploads/2018/05/solutions-crmo-18.pdf) do exactly that. The two ideas to reproduce on any similar problem are **(i)** pigeonhole within a row, and **(ii)** turning "every square is balanced" into a *recursion between consecutive rows*, as in $(\ast)$.
+**Note.** The [official RMO 2018 solutions](https://olympiads.hbcse.tifr.res.in/olympiads/wp-content/uploads/2018/05/solutions-crmo-18.pdf) use a different case split — on how three same-coloured points sit in the bottom row (adjacent triple, alternate, or two-adjacent-plus-one) — and are worth reading as a second route. The two ideas to reproduce on any similar problem are **(i)** pigeonhole within a row, and **(ii)** turning "every square is balanced" into a *recursion between consecutive rows*, as in $(\ast)$.
 [/sol]
 
 ### C10 | Hard | RMO 2019 P6

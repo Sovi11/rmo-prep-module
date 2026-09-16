@@ -61,24 +61,28 @@ $$\frac{AP}{PD}\cdot\frac{DB}{BC}\cdot\frac{CE}{EA} = 1 \implies \frac{AP}{PD}\c
 ### G2 | Easy | CRMO 2013 P1
 Let $ABC$ be an acute-angled triangle. The circle $\Gamma$ with $BC$ as diameter intersects $AB$ and $AC$ again at $P$ and $Q$ respectively. Determine $\angle BAC$ given that the orthocentre of triangle $APQ$ lies on $\Gamma$.
 [hint]
-$BC$ is a diameter, so $\angle BPC = \angle BQC = 90^\circ$: $CP$ and $BQ$ are altitudes of $ABC$. Show they are *also* altitudes of $APQ$.
+$BC$ is a diameter, so $\angle BPC = \angle BQC = 90^\circ$. Let $H'$ be the orthocentre of $APQ$ — it is **not** the orthocentre of $ABC$. Compute $\angle PH'Q$ (it is $180^\circ - A$) and compare it with the angle that chord $PQ$ subtends on $\Gamma$ from $B$.
 [/hint]
 [sol]
-**Step 1: identify the altitudes.** Since $BC$ is a diameter of $\Gamma$ and $P,Q\in\Gamma$,
-$$\angle BPC = \angle BQC = 90^\circ.$$
-So $CP\perp AB$ and $BQ\perp AC$ — these are the altitudes of $ABC$ from $C$ and $B$. Let $H$ be their intersection, the orthocentre of $ABC$.
+**Step 1: right angles and a similar triangle.** Since $BC$ is a diameter of $\Gamma$ and $P,Q\in\Gamma$,
+$$\angle BPC = \angle BQC = 90^\circ,$$
+so $CP\perp AB$ and $BQ\perp AC$. Moreover $B,P,Q,C$ all lie on $\Gamma$, so $BPQC$ is cyclic and its exterior angles give
+$$\angle APQ = \angle ACB = C, \qquad \angle AQP = \angle ABC = B.$$
+Thus triangle $APQ$ has the same angles as $ABC$ — in particular it is acute — and its orthocentre, call it $H'$, lies **inside** it, on the same side of line $PQ$ as $A$.
 
-**Step 2: $H$ is also the orthocentre of $APQ$.** In triangle $APQ$, the side $AP$ lies along $AB$ and the side $AQ$ along $AC$. Hence
-- $CP\perp AB = AP$, so line $CP$ is the altitude of $APQ$ from $P$;
-- $BQ\perp AC = AQ$, so line $BQ$ is the altitude of $APQ$ from $Q$.
+*(Warning: $H'$ is **not** the orthocentre $H$ of $ABC$. The lines $CP$ and $BQ$ are perpendicular to $AP$ and $AQ$ — sides of $APQ$ that **contain** $P$ and $Q$ — whereas the altitude of $APQ$ from $P$ must be perpendicular to the opposite side $AQ$. Confusing the two is the classic wrong turn on this problem.)*
 
-These meet at $H$, so $H$ is the orthocentre of $APQ$ as well.
+**Step 2: the angle at the orthocentre.** In any acute triangle, the angle at the orthocentre between two vertices is the supplement of the angle at the third vertex:
+$$\angle PH'Q = 180^\circ - \angle PAQ = 180^\circ - A.$$
 
-**Step 3: use the hypothesis.** We are given $H\in\Gamma$. Since $BC$ is a diameter of $\Gamma$, every point of $\Gamma$ sees $BC$ at a right angle:
-$$\angle BHC = 90^\circ.$$
+**Step 3: the same angle seen on $\Gamma$.** We are given $H'\in\Gamma$, so $P, B, H', Q$ are concyclic. Since $P$ lies on segment $AB$, the line $PQ$ separates $A$ from $B$; and $H'$ is on $A$'s side. So $B$ and $H'$ lie on **opposite** arcs of the chord $PQ$, whence
+$$\angle PH'Q = 180^\circ - \angle PBQ.$$
+But $\angle PBQ = \angle ABQ$ (as $P$ is on ray $BA$), and in the right triangle $ABQ$ ($\angle AQB = 90^\circ$) this is $90^\circ - A$. Hence
+$$\angle PH'Q = 180^\circ - \left(90^\circ - A\right) = 90^\circ + A.$$
 
-**Step 4: finish.** The standard orthocentre identity gives $\angle BHC = 180^\circ - \angle BAC$. Therefore
-$$180^\circ - \angle BAC = 90^\circ \implies \angle BAC = \mathbf{45^\circ}. \;∎$$
+**Step 4: finish.** Comparing Steps 2 and 3,
+$$180^\circ - A = 90^\circ + A \implies \angle BAC = \mathbf{45^\circ}.$$
+Conversely, if $A = 45^\circ$ then $\angle PH'Q = 135^\circ = 180^\circ - \angle PBQ$, so $H'$ does lie on $\Gamma$: the condition holds exactly when $\angle BAC = 45^\circ$. ∎
 [/sol]
 
 ### G3 | Medium | CRMO 2013 P5
@@ -139,12 +143,11 @@ $$MB\cdot MX = MG\cdot MA. \tag{1}$$
 **Power of $M$ with respect to the circle $AGC$.** The line $BC$ meets it at $C$ and $Y$; the line $AM$ meets it at $A$ and $G$. Hence
 $$MC\cdot MY = MG\cdot MA. \tag{2}$$
 
-**Compare.** The right sides of (1) and (2) are identical, so
-$$MB\cdot MX = MC\cdot MY.$$
-But $MB = MC$ (as $M$ is the midpoint of $BC$), and these are non-zero, so
-$$MX = MY.$$
-
-**Orientation.** $X$ and $Y$ lie on **opposite** sides of $M$ along line $BC$: $X$ is the second intersection with the circle through $B$, and $Y$ with the circle through $C$, and the signed powers in (1) and (2) carry the same sign, which places $X$ and $Y$ symmetrically about $M$.
+**Compare, with signed lengths.** Power of a point is a *signed* statement: taking directed lengths along the lines $BC$ and $AM$, (1) and (2) read
+$$\overline{MB}\cdot\overline{MX} = \overline{MA}\cdot\overline{MG} = \overline{MC}\cdot\overline{MY}.$$
+Since $M$ is the midpoint of $BC$, $\overline{MB} = -\overline{MC} \ne 0$. Dividing,
+$$\overline{MX} = -\,\overline{MY}.$$
+So $X$ and $Y$ are at equal distance from $M$ on **opposite** sides of it — and $X \ne Y$, because $\overline{MX} = \overline{MA}\cdot\overline{MG}/\overline{MB} \ne 0$.
 
 Therefore **$M$ is the midpoint of $XY$**.
 
@@ -158,7 +161,7 @@ Hence $G$ is the centroid of triangle $AXY$. ∎
 [/sol]
 
 ### G6 | Medium | CRMO 2014 P1
-Let $ABC$ be a triangle and let $AD$ be the perpendicular from $A$ onto $BC$. Let $K$, $L$, $M$ be points on $AD$ such that $AK = KL = LM = MD$. Suppose the sum of the areas of the shaded regions equals the sum of the areas of the unshaded regions (the four strips cut off by the lines through $K$, $L$, $M$ parallel to $BC$, alternately shaded). Prove that $BD = DC$.
+Let $ABC$ be a triangle and let $AD$ be the perpendicular from $A$ onto $BC$. Let $K$, $L$, $M$ be points on $AD$ such that $AK = KL = LM = MD$. Suppose the sum of the areas of the shaded regions equals the sum of the areas of the unshaded regions (the lines through $K$, $L$, $M$ parallel to $BC$, together with $AD$, divide the triangle into eight regions, shaded in a checkerboard pattern: on the $B$-side of $AD$ the first and third strips from the top are shaded, on the $C$-side the second and fourth). Prove that $BD = DC$.
 [hint]
 Each strip's area splits into a part on the $B$-side of $AD$ and a part on the $C$-side. Compute the four strip areas on each side separately — they are differences of areas of similar triangles with ratios $\frac14,\frac24,\frac34,1$.
 [/hint]
@@ -175,11 +178,7 @@ $$\tfrac1{16}[ABD],\quad \left(\tfrac4{16}-\tfrac1{16}\right)[ABD] = \tfrac3{16}
 
 Identically, the right-hand strips have areas $\frac1{16}, \frac3{16},\frac5{16},\frac7{16}$ times $[ACD]$.
 
-**Impose the condition.** Suppose the strips are shaded alternately, starting with the top one shaded. Then
-
-$$\text{shaded} = \left(\tfrac1{16}+\tfrac5{16}\right)\big([ABD]+[ACD]\big) \;=\; \tfrac{6}{16}[ABC]$$
-
-— which is independent of where $D$ lies, giving no information. So the intended shading must alternate **across** $AD$ as well: on the left take strips 1 and 3, on the right strips 2 and 4 (a checkerboard). Then
+**Impose the condition.** With the checkerboard shading — on the left ($B$-side) strips 1 and 3 are shaded, on the right ($C$-side) strips 2 and 4 —
 
 $$\text{shaded} = \left(\tfrac1{16}+\tfrac5{16}\right)[ABD] + \left(\tfrac3{16}+\tfrac7{16}\right)[ACD] = \tfrac6{16}[ABD]+\tfrac{10}{16}[ACD],$$
 $$\text{unshaded} = \tfrac{10}{16}[ABD]+\tfrac6{16}[ACD].$$
@@ -294,7 +293,7 @@ Hence $\gcd(b,c) = \gcd(AB,AC) > 1$. ∎
 Let $ABCD$ be a cyclic quadrilateral with $AB$ parallel to $CD$. Let $O$ be the circumcentre of $ABCD$, and let $L$ be the point on $AD$ such that $OL$ is perpendicular to $AD$. Prove that
 $$OB\cdot\left(AB+CD\right) = OL\cdot\left(AC+BD\right).$$
 [hint]
-$OB = R$. $L$ is the midpoint of $AD$, so $OL = \sqrt{R^2 - \frac{AD^2}{4}}$. Since $AB\parallel CD$, the trapezium is isosceles, so $AC = BD$ — which halves the work.
+Since $AB\parallel CD$, the trapezium is isosceles, so $AC = BD$. Set $x = \angle ACD = \angle BDC$; compute the area two ways ($\tfrac12 AC^2\sin 2x$ and $\tfrac12(AB+CD)\,h$) and note $OL = R\cos x$.
 [/hint]
 [sol]
 Let $R$ be the circumradius, so $OB = R$.
@@ -303,29 +302,28 @@ Let $R$ be the circumradius, so $OB = R$.
 $$AD = BC \qquad\text{and}\qquad AC = BD.$$
 So the right-hand side is $OL\cdot 2\,AC$.
 
-**Step 2: $L$ is the midpoint of $AD$.** $OL\perp AD$ with $O$ the centre, so $OL$ is the perpendicular from the centre to the chord $AD$, which bisects it. Hence
-$$AL = LD = \frac{AD}{2}, \qquad OL = \sqrt{R^2 - \frac{AD^2}{4}}.$$
+**Step 2: name the key angle.** Let $x = \angle ACD$. Then also
+$$\angle BAC = \angle ACD = x \quad(\text{alternate angles, } AB\parallel CD), \qquad \angle BDC = \angle BAC = x \quad(\text{both subtend arc } BC),$$
+so $\angle ACD = \angle BDC = x$. Let $E = AC\cap BD$. Triangle $ECD$ has base angles $x$ at $C$ and $D$, so $x < 90^\circ$, and its exterior angle at $E$ is
+$$\angle BEC = 2x.$$
 
-**Step 3: express everything with the extended law of sines.** Let $\angle ADB = \delta$ (inscribed, subtending $AB$) and $\angle DAC = \alpha$ (subtending $CD$). Then
-$$AB = 2R\sin\delta, \qquad CD = 2R\sin\alpha.$$
-Also $AC$ subtends $\angle ADC$, and $AD$ subtends $\angle ABD$.
+**Step 3: the area two ways.** The area of a convex quadrilateral is half the product of its diagonals times the sine of the angle between them, so
+$$[ABCD] = \tfrac12\,AC\cdot BD\,\sin 2x = \tfrac12\,AC^2\sin 2x.$$
+On the other hand, if $h$ is the distance between the parallel lines $AB$ and $CD$, then $[ABCD] = \tfrac12\,(AB+CD)\,h$. Drop the perpendicular from $A$ to line $CD$, meeting it at $P$; in the right triangle $APC$ the angle at $C$ is $\angle ACP = \angle ACD = x$, so $h = AP = AC\sin x$. Equating the two expressions and cancelling $\tfrac12 AC\sin x \ne 0$:
+$$AB + CD = 2\,AC\cos x. \tag{1}$$
 
-Since $AB\parallel CD$, the arcs give $\angle BAC = \angle ACD$, and a short chase shows the inscribed angle subtending $AD$ equals $\alpha + \delta$ ... concretely, $\angle ABD$ subtends $AD$, and the arc $AD$ equals $180^\circ$ minus the arcs $AB$ and $CD$ halves, giving
-$$AD = 2R\sin\left(\alpha+\delta\right)\cdot\!\ldots$$
+**Step 4: compute $OL$.** $OL\perp AD$ with $O$ the centre, so $L$ is the midpoint of the chord $AD$ and $OL$ bisects the central angle: $\angle AOL = \tfrac12\angle AOD$. Since $x < 90^\circ$, the point $C$ lies on the major arc $AD$ (the same side of $AD$ as $O$), so the inscribed angle $\angle ACD = x$ is half the central angle: $\angle AOD = 2x$. Hence $\angle AOL = x$, and in the right triangle $AOL$,
+$$OL = OA\cos x = R\cos x. \tag{2}$$
 
-**Step 4: reduce to a trigonometric identity.** With the above, the claim $R\left(AB+CD\right) = OL\cdot 2AC$ becomes
-$$R\cdot2R\left(\sin\delta+\sin\alpha\right) = 2\,OL\cdot AC,$$
-and substituting $OL = R\cos\theta$ and $AC = 2R\sin\psi$ for the appropriate inscribed angles, the identity reduces to the sum-to-product formula
-$$\sin\delta+\sin\alpha = 2\sin\frac{\alpha+\delta}{2}\cos\frac{\alpha-\delta}{2}.$$
+**Step 5: finish.** By (1), (2) and Step 1,
+$$OB\cdot(AB+CD) = R\cdot 2\,AC\cos x = 2\,(R\cos x)\,AC = 2\,OL\cdot AC = OL\cdot(AC+BD). \;∎$$
 
-**Honest note.** Pinning down exactly which inscribed angles appear requires care with the configuration, and the official solution does this cleanly. Work it with a large diagram, then compare:
+Compare with the [official RMO 2024 solutions](https://olympiads.hbcse.tifr.res.in/wp-content/uploads/2024/11/Official-Solutions-for-RMO-2024.pdf) (this is their second solution).
 
-- [RMO 2024 problems with official solutions](https://olympiads.hbcse.tifr.res.in/wp-content/uploads/2024/11/Official-Solutions-for-RMO-2024.pdf)
-
-**The three facts that carry the problem**, each worth stating explicitly even in a partial write-up:
-1. A cyclic trapezium is **isosceles**: $AD = BC$ and $AC = BD$.
-2. The perpendicular from the centre to a chord **bisects** it, so $OL = \sqrt{R^2-\frac{AD^2}{4}}$.
-3. Every chord is $2R\sin(\text{inscribed angle it subtends})$.
+**The three ideas that carry the problem.**
+1. A cyclic trapezium is **isosceles**: $AC = BD$.
+2. **Area two ways** — diagonals-and-sine versus bases-and-height — turns a length identity into a single angle $x$.
+3. The perpendicular from the centre to a chord **bisects the central angle**, giving $OL = R\cos x$.
 [/sol]
 
 ### G10 | Hard | RMO 2025 P5

@@ -274,7 +274,7 @@ So $(a,b,c)$ is another positive-integer solution with $c = z/3 < z$, contradict
 Hence no solution exists. ∎
 [/sol]
 
-### P8 | Hard | RMO 2019 P4, adapted
+### P8 | Hard | Classic (induction fallacy)
 Explain precisely what is wrong with this "proof", then give a correct statement.
 > **Claim.** All horses are the same colour.
 > *Proof.* Induct on the number $n$ of horses. For $n=1$ it is clear. Suppose any $n$ horses are the same colour, and take $n+1$ horses $h_1,\dots,h_{n+1}$. The first $n$ are the same colour, and the last $n$ are the same colour, so all $n+1$ are. ∎

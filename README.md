@@ -98,8 +98,19 @@ python3 tools/build_manifest.py
 
 ## Credits
 
-Past papers and official solutions are © HBCSE–TIFR and linked, not redistributed:
+Past-paper **problem statements** are transcribed from the official HBCSE PDFs and are
+© HBCSE–TIFR; every one links back to its source paper. The official solution PDFs are
+linked, not copied. The **solutions written here are original** to this module:
 https://olympiads.hbcse.tifr.res.in/how-to-prepare/past-papers/
 
 Topic handouts linked in the chapters are by Yufei Zhao and Evan Chen.
 Math rendering by [KaTeX](https://katex.org) (MIT).
+
+## License
+
+- **Code** (`serve.py`, `tools/`, `web/assets/js`, `web/assets/css`, `web/index.html`):
+  [MIT](LICENSE).
+- **Content** (`web/content/**` — the chapters, problems, hints and solutions):
+  [CC BY-NC-SA 4.0](LICENSE-CONTENT.md). Share it, teach from it, adapt it — with
+  attribution, non-commercially, under the same terms. Not for repackaging into a paid product.
+- Official HBCSE problem statements remain © HBCSE–TIFR and are not covered by either license.

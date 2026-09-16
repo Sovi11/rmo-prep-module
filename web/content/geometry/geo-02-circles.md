@@ -238,37 +238,37 @@ $$PA = PB+PC. \;∎$$
 ### P9 | Hard | RMO 2025 P3
 Let $\Omega$ and $\Gamma$ be circles centred at $O_1, O_2$ meeting at distinct points $A, B$, with $O_1$ outside $\Gamma$ and $O_2$ outside $\Omega$. Let $\ell$ be a line not through $A$ or $B$ meeting $\Omega$ at $P, R$ and $\Gamma$ at $Q, S$, with $P,Q,R,S$ in this order on $\ell$. Suppose $O_1, B$ lie on one side of $\ell$ and $O_2, A$ on the other. Given that $A, P, Q, O_1$ are concyclic and $B, R, S, O_2$ are concyclic, prove $AQ = BR$.
 [hint]
-$AB$ is the radical axis of $\Omega$ and $\Gamma$. Let $X = AB \cap \ell$ and compute powers of $X$. Then use the two given concyclicities to relate angles at $A$ and $B$.
+Show the stronger statement $AQ = QR = RB$. In triangle $AQR$, use the exterior angle at $Q$; the concyclicity of $A,P,Q,O_1$ turns $\angle AQP$ into the **central** angle $\angle AO_1P$ of $\Omega$, which is twice the inscribed angle $\angle ARQ$.
 [/hint]
 [sol]
-**Setup.** The line $AB$ is the **radical axis** of $\Omega$ and $\Gamma$. Let $X = AB\cap\ell$ (the lines meet, since $\ell$ does not pass through $A$ or $B$ and is not parallel to $AB$ in this configuration).
+We prove the stronger statement
+$$AQ = QR = RB,$$
+which gives $AQ = BR$ at once.
 
-**Equal powers at $X$.** Because $X$ lies on the radical axis,
-$$\operatorname{pow}(X,\Omega) = \operatorname{pow}(X,\Gamma),$$
-that is, using the chords cut on $\ell$,
-$$XP\cdot XR = XQ\cdot XS. \tag{1}$$
+**$AQ = QR$.** Look at triangle $AQR$. Since $P, Q, R$ lie on $\ell$ in this order, $P$ is on the extension of $RQ$ beyond $Q$, so $\angle AQP$ is the **exterior angle** of triangle $AQR$ at $Q$:
+$$\angle AQP = \angle QAR + \angle ARQ. \tag{1}$$
+Now use the hypothesis that $A, P, Q, O_1$ are concyclic: $\angle AQP$ and $\angle AO_1P$ are inscribed angles on the chord $AP$ of that circle, and the side conditions in the statement place $Q$ and $O_1$ on the same side of $AP$, so
+$$\angle AQP = \angle AO_1P.$$
+But $O_1$ is the centre of $\Omega$, and $A, P, R\in\Omega$, so $\angle AO_1P$ is a **central** angle of $\Omega$ on the chord $AP$, twice the inscribed angle from $R$:
+$$\angle AO_1P = 2\angle ARP = 2\angle ARQ$$
+(the last step because $Q$ lies on segment $RP$, so rays $RP$ and $RQ$ coincide). Substituting into (1):
+$$\angle QAR + \angle ARQ = 2\angle ARQ \implies \angle QAR = \angle ARQ,$$
+so triangle $AQR$ is isosceles with $AQ = QR$.
 
-**Consequence for the order.** With $P,Q,R,S$ in order on $\ell$, (1) forces $X$ to lie outside segment $PR$ or inside both — in this configuration $X$ lies between $Q$ and $R$, and (1) gives the key length relation used below.
+**$QR = RB$.** The mirror argument. In triangle $BRQ$, the point $S$ lies on the extension of $QR$ beyond $R$, so $\angle BRS$ is the exterior angle at $R$:
+$$\angle BRS = \angle RBQ + \angle BQR. \tag{2}$$
+Since $B, R, S, O_2$ are concyclic, $\angle BRS = \angle BO_2S$, and this is a central angle of $\Gamma$ on the chord $BS$, so $\angle BO_2S = 2\angle BQS = 2\angle BQR$ (as $S$ is on ray $QR$). Hence (2) gives $\angle RBQ = \angle BQR$, i.e. $QR = RB$.
 
-**Use the first concyclicity.** $A, P, Q, O_1$ concyclic means
-$$\angle(QA,\,QP) = \angle(O_1A,\,O_1P)$$
-as directed angles. Now $O_1A = O_1P = $ the radius of $\Omega$, so triangle $O_1AP$ is isosceles; the angle $\angle AO_1P$ is the central angle subtending chord $AP$ of $\Omega$, hence
-$$\angle AQP = \tfrac12\,\angle AO_1P \cdot 2 = \angle AO_1P \ \text{(as inscribed in the new circle)}.$$
-Combining with the inscribed angle theorem in $\Omega$ (where $\angle AO_1P$ is twice the inscribed angle $\angle ARP$), we obtain a relation between $\angle AQP$ and $\angle ARP$ — which is exactly what identifies triangle $AQR$.
+**Conclusion.** $AQ = QR = RB$, so in particular $AQ = BR$. ∎
 
-**Symmetric statement.** The second concyclicity $B,R,S,O_2$ gives the mirror relation for $B$ with respect to $\Gamma$.
-
-**The conclusion.** Putting the two together shows that triangles $AQX$ and $BRX$ are congruent (they share the angle at $X$, have equal corresponding angles from the two relations above, and equal corresponding sides from the radical-axis relation (1)). Hence
-$$AQ = BR.$$
-
-**Honest note.** This is RMO 2025 Problem 3, one of the harder problems on that paper, and the angle bookkeeping above needs to be done with directed angles to cover the configuration properly. Work it through with a large, accurate diagram, then check your write-up against the official solution:
+Compare with the official write-up:
 
 - [RMO 2025 paper](https://olympiads.hbcse.tifr.res.in/wp-content/uploads/2025/11/RMO-2025-Paper-1.pdf)
 - [RMO 2025 official solutions](https://olympiads.hbcse.tifr.res.in/wp-content/uploads/2025/12/RMO-2025-solutions.pdf)
 
 **The two ideas that unlock it**, and which you should be able to produce on any similar problem:
-1. **$AB$ is the radical axis** — so any point on it has equal powers, giving $XP\cdot XR = XQ\cdot XS$.
-2. **A centre lying on a circle through two of its own points** ($O_1$ with $A$, $P$) forces an isosceles triangle, converting a central angle into an inscribed one.
+1. **The exterior angle of a triangle equals the sum of the two remote interior angles** — the humble fact that converts "$\angle AQP = 2\angle ARQ$" into "$\angle QAR = \angle ARQ$".
+2. **A circle through a centre and two points of its own circle** ($O_1$ with $A, P \in \Omega$) lets you read a *central* angle of $\Omega$ as an *inscribed* angle of the new circle — that is exactly what the odd-looking concyclicity hypothesis is for.
 [/sol]
 
 ### P10 | Hard | Standard

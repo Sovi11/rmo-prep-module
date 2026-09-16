@@ -141,8 +141,7 @@ $$3^6 = 729.$$
 
 Among these, $A = B$ occurs only when every one of the 6 elements is in "neither", giving exactly one ordered pair, namely $A=B=\{2,3,5,7\}$. Excluding it leaves $729-1 = 728$ ordered pairs with $A \ne B$.
 
-Since the problem asks for **unordered** pairs $\{A,B\}$ and $A\ne B$, each unordered pair corresponds to exactly 2 ordered pairs:
-$$\frac{728}{2} = \mathbf{364}. \;∎$$
+**Ordered or unordered?** The official HBCSE solution stops here and gives $\mathbf{728}$ — it counts *ordered* pairs $(A,B)$. If $\{A,B\}$ is read literally as an *unordered* pair, each such pair with $A\ne B$ corresponds to exactly 2 ordered pairs, giving $\frac{728}{2} = 364$. The content is the $3^6$ step; in an exam, state explicitly which you are counting. ∎
 [/sol]
 
 ### P7 | Medium | Standard

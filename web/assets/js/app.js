@@ -1,6 +1,6 @@
-import { md, plain } from './md.js?v=f753230f';
-import { store, STATUSES, HABITS, today, shiftDay } from './store.js?v=f753230f';
-import { library, loadLibrary, loadChapter, loadAll } from './content.js?v=f753230f';
+import { md, plain } from './md.js?v=c9f6e661';
+import { store, STATUSES, HABITS, today, shiftDay } from './store.js?v=c9f6e661';
+import { library, loadLibrary, loadChapter, loadAll } from './content.js?v=c9f6e661';
 
 const EXAM_DATE = new Date('2026-11-15T13:00:00+05:30');
 const $ = s => document.querySelector(s);

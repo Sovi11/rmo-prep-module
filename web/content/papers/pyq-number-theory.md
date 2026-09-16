@@ -56,7 +56,9 @@ $$R(n) \ \ge\ \frac12\left\lceil\frac n2\right\rceil\left(\left\lceil\frac n2\ri
 
 **Force $n$ small.** If $R(n) = n-1$, then
 $$n-1 \ \ge\ \frac12\left\lceil\frac n2\right\rceil\left(\left\lceil\frac n2\right\rceil - 1\right).$$
-For $n \ge 9$, $\left\lceil\frac n2\right\rceil \ge 5$, so the right side is at least $\frac12\cdot5\cdot4 = 10$ while growing quadratically, and one checks directly that the inequality fails for every $n\ge9$. (At $n=9$: right side $=\frac12\cdot5\cdot4 = 10 > 8 = n-1$.)
+For $n \ge 9$ put $c = \left\lceil\frac n2\right\rceil \ge 5$. Then $c - 1 \ge 4$, so
+$$\tfrac12\,c\,(c-1) \ \ge\ \tfrac12\cdot c\cdot 4 = 2c \ \ge\ n \ >\ n-1,$$
+using $2\left\lceil\frac n2\right\rceil \ge n$. So $R(n) \ge n > n-1$, contradicting $R(n) = n-1$.
 
 So $n \le 8$.
 
@@ -219,7 +221,7 @@ $S(n)$ grows like $\log n$, so the equation forces $n$ to be small. Then use $n 
 $$10^{d-1}\ \le\ n = 2S(n)^2 \ \le\ 2(9d)^2 = 162d^2.$$
 - $d=4$: $1000 \le 162\cdot16 = 2592$ ✓ possible.
 - $d=5$: $10^4 = 10000 \le 162\cdot25 = 4050$? **No.**
-- and the left side grows exponentially while the right grows quadratically, so $d\ge5$ is impossible.
+- and if $10^{d-1} > 162d^2$ for some $d \ge 5$ then $10^{d} = 10\cdot10^{d-1} > 1620d^2 \ge 162(d+1)^2$ (as $10d^2 \ge (d+1)^2$ for $d\ge1$), so by induction from $d=5$ no $d \ge 5$ works.
 
 Hence $n \le 9999$ and $s := S(n) \le 36$.
 
@@ -283,10 +285,10 @@ Every such $r$ is $\frac{N}{10^8-1}$ for an integer $N$. "Period divides $d$" is
 [sol]
 Let $M = 10^8-1 = 99999999$. Every purely periodic decimal whose period divides 8 is $r = \frac NM$ for a unique integer $N$ with $0\le N<M$, and conversely.
 
-**Counting.** The period of $\frac NM$ divides $d$ (for $d \mid 8$) precisely when $N$ is a multiple of $\frac{M}{10^d-1}$, and the number of such $N$ in $[0,M)$ is $10^d-1$ together with $N=0$, i.e. $10^d$ values counting $N=0$.
+**Counting.** The period of $\frac NM$ divides $d$ (for $d \mid 8$) precisely when $\frac NM = \frac{K}{10^d-1}$ for an integer $K$, i.e. when $N$ is a multiple of $\frac{M}{10^d-1}$. The multiples of $\frac{M}{10^d-1}$ in $[0,M)$ are $K\cdot\frac{M}{10^d-1}$ for $K = 0,1,\dots,10^d-2$ (the value $K = 10^d-1$ would give $N = M$, which is excluded), so there are exactly $10^d-1$ of them.
 
 The divisors of 8 form a chain $1\mid2\mid4\mid8$, so inclusion–exclusion collapses to a single difference: the number of $N$ with period **exactly** 8 is
-$$|S| = 10^8 - 10^4.$$
+$$|S| = \left(10^8-1\right) - \left(10^4-1\right) = 10^8 - 10^4.$$
 
 **Summing by pairing.** Pair each $N$ with its **nines-complement** $M - N$. The decimal block of $M-N$ is obtained from that of $N$ by replacing each digit $x$ with $9-x$, and complementing preserves the minimal block length — so $N$ has period exactly 8 iff $M-N$ does. The pairing is therefore an involution on $S$.
 

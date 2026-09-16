@@ -160,7 +160,7 @@ for some non-negative integers $u, v$.
 $$u^2+v^2 = 2m^2, \qquad u^2-v^2 = 8n. \tag{2}$$
 From $u^2+v^2 = 2m^2$, the integers $u$ and $v$ have the **same parity**.
 - If both are odd, then $u^2\equiv v^2\equiv1\pmod8$, so $8n = u^2-v^2\equiv0\pmod 8$ — automatic. Look instead at $m$: $u^2+v^2\equiv2\pmod8$, so $2m^2\equiv2\pmod 8$, giving $m^2\equiv1\pmod4$, so $m$ is odd. Then from (1), $4n = u^2-m^2$ with both $u,m$ odd, so $u^2-m^2\equiv0\pmod 8$, giving $8\mid4n$, i.e. $2\mid n$. ✓
-- If both are even, write $u=2u'$, $v=2v'$; then $u'^2+v'^2 = \frac{m^2}{2}$ forces $m$ even, say $m=2m'$, and $u'^2+v'^2 = 2m'^2$, so $u',v'$ have the same parity, and $8n = 4\left(u'^2-v'^2\right)$ gives $2n = u'^2-v'^2$, which is divisible by 2 when $u',v'$ share parity — hence $2 \mid n$. ✓
+- If both are even, write $u=2u'$, $v=2v'$; then $u'^2+v'^2 = \frac{m^2}{2}$ forces $m$ even, say $m=2m'$, and $u'^2+v'^2 = 2m'^2$, so $u',v'$ have the same parity, and $8n = 4\left(u'^2-v'^2\right)$ gives $2n = u'^2-v'^2$. Since $u',v'$ share parity, both $u'-v'$ and $u'+v'$ are even, so $4 \mid (u'-v')(u'+v') = u'^2-v'^2 = 2n$ — hence $2 \mid n$. ✓
 
 Either way, $2 \mid n$.
 
@@ -295,7 +295,7 @@ Order them, let $m$ be the smallest gap between consecutive ones, and express th
 $$m = \min_{i<j}\left|a_i-a_j\right| = \min_{1\le i\le 3}\left(a_{i+1}-a_i\right),$$
 the smallest gap, which for a sorted list is attained between consecutive entries.
 
-Suppose for contradiction that $m^2 > \frac15$, i.e. every gap exceeds $m$ with $m > \frac{1}{\sqrt5}$.
+Every consecutive gap is at least $m$; we show $m^2 \le \frac15$ directly.
 
 **Bound the sum of squares from below.** Shifting all four numbers by a constant $c$ does not change the gaps, and
 $$\sum_i \left(a_i - c\right)^2$$
@@ -303,12 +303,15 @@ is minimised over $c$ at the mean $\bar a$, where it equals $\sum a_i^2 - 4\bar 
 
 So it suffices to show that four reals with all consecutive gaps $\ge m$ satisfy
 $$\sum_i\left(a_i-\bar a\right)^2 \ \ge\ 5m^2,$$
-because then $1 \ge 5m^2$, i.e. $m^2\le\frac15$ — the contradiction we want.
+because then $1 \ge 5m^2$, i.e. $m^2\le\frac15$.
 
-**Prove that bound.** With gaps $g_1 = a_2-a_1$, $g_2 = a_3-a_2$, $g_3 = a_4-a_3$, all $\ge m$, the variance is minimised (for fixed minimum gap) when all gaps equal $m$, i.e. when the four numbers are in arithmetic progression with common difference $m$. In that case, taking them as
-$$-\tfrac32 m,\ -\tfrac12 m,\ \tfrac12 m,\ \tfrac32 m$$
-(already centred at their mean), the sum of squares is
-$$m^2\left(\tfrac94+\tfrac14+\tfrac14+\tfrac94\right) = 5m^2.$$
+**Prove that bound.** With gaps $g_1 = a_2-a_1$, $g_2 = a_3-a_2$, $g_3 = a_4-a_3$, all $\ge m$, any two of the sorted numbers satisfy, for $i<j$,
+$$a_j - a_i = g_i + g_{i+1} + \cdots + g_{j-1} \ \ge\ (j-i)\,m.$$
+Now use the identity (expand and collect)
+$$\sum_{i<j}\left(a_i-a_j\right)^2 = 4\sum_i a_i^2 - \Big(\sum_i a_i\Big)^2 = 4\sum_i\left(a_i-\bar a\right)^2.$$
+The six pairs $(i,j)$ have $j-i$ equal to $1,1,1,2,2,3$, so
+$$4\sum_i\left(a_i-\bar a\right)^2 = \sum_{i<j}\left(a_i-a_j\right)^2 \ \ge\ m^2\left(1+1+1+4+4+9\right) = 20m^2,$$
+i.e. $\sum_i(a_i-\bar a)^2 \ge 5m^2$, with equality exactly when every gap equals $m$ — the arithmetic progression $-\tfrac32 m,\ -\tfrac12 m,\ \tfrac12 m,\ \tfrac32 m$ about the mean, whose squares indeed sum to $m^2\left(\tfrac94+\tfrac14+\tfrac14+\tfrac94\right) = 5m^2$.
 
 Hence $\sum_i(a_i-\bar a)^2 \ge 5m^2$ always, and combined with $\sum(a_i-\bar a)^2 \le 1$:
 $$5m^2 \le 1 \implies m^2 \le \frac15.$$
@@ -326,26 +329,38 @@ Compare your write-up with the [official RMO 2024 solutions](https://olympiads.h
 Let $a,b,c$ be positive real numbers with $a+b+c=1$. Prove that
 $$\frac{a}{a^2+b^3+c^3}+\frac{b}{b^2+c^3+a^3}+\frac{c}{c^2+a^3+b^3}\ \le\ \frac{1}{5abc}.$$
 [hint]
-The lemma $b^3+c^3\ge bc(b+c)$ — equivalently $(b-c)^2(b+c)\ge0$ — lets you bound each denominator below. Then homogenise using $a+b+c=1$.
+Homogenise the denominator with $a+b+c=1$ (write $a^2 = a^2(a+b+c)$) so that $a^3+b^3+c^3 \ge 3abc$ can bite. The finish is an AM–HM on five numbers.
 [/hint]
 [sol]
-This is one of the hardest problems on that paper. Here are the two genuine ingredients; work the assembly yourself and then check it against the official write-up.
+This is one of the hardest problems on that paper. The whole solution is two moves: **homogenise** the denominator with the constraint, then **AM–HM**.
 
-**Ingredient 1 (the lemma).** For positive $b,c$,
-$$b^3+c^3 \ \ge\ bc(b+c).$$
-*Proof.* $b^3+c^3-b^2c-bc^2 = b^2(b-c)-c^2(b-c) = (b-c)\left(b^2-c^2\right) = (b-c)^2(b+c)\ \ge\ 0$ ✓
+**Step 1 — homogenise and bound each denominator.** Since $a+b+c=1$,
+$$a^2 = a^2(a+b+c) = a^3 + a^2b + a^2c,$$
+so
+$$a^2+b^3+c^3 = \left(a^3+b^3+c^3\right) + a^2b + a^2c.$$
+By AM–GM, $a^3+b^3+c^3 \ge 3abc$, hence
+$$a^2+b^3+c^3 \ \ge\ 3abc + a^2b + a^2c = a\left(3bc + ab + ca\right),$$
+and therefore
+$$\frac{a}{a^2+b^3+c^3} \ \le\ \frac{1}{3bc+ca+ab}. \tag{1}$$
+The same argument, cyclically, gives
+$$\frac{b}{b^2+c^3+a^3} \le \frac{1}{3ca+ab+bc}, \qquad \frac{c}{c^2+a^3+b^3} \le \frac{1}{3ab+bc+ca}.$$
 
-**Ingredient 2 (bound each denominator).** Using the lemma and $b+c = 1-a$,
-$$a^2+b^3+c^3 \ \ge\ a^2 + bc(1-a),$$
-so each term satisfies
-$$\frac{a}{a^2+b^3+c^3} \ \le\ \frac{a}{a^2+bc(1-a)}.$$
+**Step 2 — AM–HM on five numbers.** Apply AM–HM to the five positive numbers $bc, bc, bc, ca, ab$:
+$$\frac{3bc+ca+ab}{5} \ \ge\ \frac{5}{\frac{3}{bc}+\frac{1}{ca}+\frac{1}{ab}}
+\quad\Longrightarrow\quad
+\frac{1}{3bc+ca+ab} \ \le\ \frac{1}{25}\left(\frac{3}{bc}+\frac{1}{ca}+\frac{1}{ab}\right). \tag{2}$$
+Likewise for the other two denominators.
 
-**What remains.** Summing the three bounds and comparing against $\frac1{5abc}$ is the substantial part, and the official solution does it with a careful application of Cauchy–Schwarz after homogenising.
+**Step 3 — sum.** Adding the three bounds from (1) and (2), each of $\frac1{bc},\frac1{ca},\frac1{ab}$ appears with total coefficient $3+1+1 = 5$:
+$$\sum_{\text{cyc}}\frac{a}{a^2+b^3+c^3} \ \le\ \frac{5}{25}\left(\frac1{bc}+\frac1{ca}+\frac1{ab}\right) = \frac15\cdot\frac{a+b+c}{abc} = \frac{1}{5abc},$$
+using $a+b+c=1$ in the last step. ∎
+
+**Equality.** AM–GM in Step 1 needs $a=b=c$, and AM–HM in Step 2 needs $bc=ca=ab$, i.e. again $a=b=c$. So equality holds exactly at $a=b=c=\tfrac13$, where both sides equal $\tfrac{27}{5}$ — check: each term is $\frac{1/3}{1/9+2/27} = \frac{9}{5}$, and $\frac{1}{5abc} = \frac{27}{5}$ ✓
 
 - [RMO 2019 paper](https://olympiads.hbcse.tifr.res.in/wp-content/uploads/2019/10/rmoengfirst2019.pdf)
 - [RMO 2019 official solutions](https://olympiads.hbcse.tifr.res.in/wp-content/uploads/2019/10/rmosolutions2019.pdf)
 
-**What to take away even if you do not finish it.** The lemma $b^3+c^3\ge bc(b+c)$ is genuinely reusable — it is the degree-3 analogue of $b^2+c^2\ge2bc$ — and *homogenising with the constraint* ($a^2 = a^2(a+b+c)$) is the standard first move whenever a constraint like $a+b+c=1$ is given alongside mixed degrees.
+**The technique.** *Homogenising with the constraint* ($a^2 = a^2(a+b+c)$) is the standard first move whenever a constraint like $a+b+c=1$ sits alongside mixed degrees — it is what lets AM–GM bite on the denominator. The five-number AM–HM trick (repeating $bc$ three times to match the coefficient $3$) is worth remembering: the multiplicities are chosen so that the final cyclic sum comes out symmetric.
 
-**On exam strategy.** In a real paper, writing out Ingredients 1 and 2 with proof, plus a clear statement of what remains, is worth genuine partial credit. Do not leave the page blank because you cannot close it.
+**On exam strategy.** Even Step 1 alone, written out with the AM–GM justification, is worth genuine partial credit. Do not leave the page blank because you cannot see the finish.
 [/sol]

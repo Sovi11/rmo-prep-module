@@ -8,7 +8,7 @@ RMO 2026 is on **Sunday 15 November, 1:00–4:00 pm**. Six problems, three hours
 
 > **No marks will be awarded for stating an answer without justification.**
 
-That single sentence is the difference between IOQM and RMO, and it is the thing to internalise first. In IOQM you scored 50 by getting numbers right. Here, a correct number with no argument scores **zero**, and a complete argument for three problems beats scrappy work on all six.
+That single sentence is the difference between IOQM and RMO, and it is the thing to internalise first. In IOQM you scored by getting numbers right. Here, a correct number with no argument scores **zero**, and a complete argument for three problems beats scrappy work on all six.
 
 ## How the arithmetic of marks works
 

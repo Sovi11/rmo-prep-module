@@ -12,7 +12,7 @@ video: Search: how to write olympiad proofs :: https://www.youtube.com/results?s
 
 ## Why this chapter comes first
 
-You have just scored 50 on IOQM, which means you can find answers. RMO does not pay for answers. It pays for **arguments** — and it pays in blocks of 17.
+You have cleared IOQM, which means you can find answers. RMO does not pay for answers. It pays for **arguments** — and it pays in blocks of 17.
 
 A marker sitting with your script has one question in mind: *does this establish the result, for every case, without gaps?* They are not hostile, but they will not fill in a step for you, and they cannot give you credit for something you were clearly thinking but did not write.
 

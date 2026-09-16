@@ -116,7 +116,7 @@ Bound: if $n$ has $d$ digits then $n \ge 10^{d-1}$ and $S(n)\le 9d$, so $n \le 2
 $$10^{d-1} \le n = 2S(n)^2 \le 2(9d)^2 = 162d^2.$$
 - $d=4$: $1000 \le 162\cdot16 = 2592$ ✓ possible.
 - $d=5$: $10^4 = 10000 \le 162\cdot 25 = 4050$? No. ✗
-- and for $d \ge 5$ the left side grows much faster, so no solutions.
+- and if $10^{d-1} > 162d^2$ for some $d \ge 5$ then $10^{d} = 10\cdot10^{d-1} > 1620d^2 \ge 162(d+1)^2$ (as $10d^2 \ge (d+1)^2$ for $d\ge1$), so by induction from $d=5$ no $d \ge 5$ works.
 
 So $d \le 4$, i.e. $n \le 9999$, and $S(n)\le 36$.
 
@@ -307,15 +307,11 @@ $0.\overline{a_1\cdots a_8} = \frac{N}{99999999}$ where $N$ is the 8-digit block
 [sol]
 Write $M = 99999999 = 10^8-1$. Every $r$ with a purely periodic expansion of period dividing 8 is $r = N/M$ for a unique $N$ with $0 \le N < M$.
 
-The period of $N/M$ divides 8, and equals $d$ exactly when $N$ is a multiple of $M/(10^{d}-1)$… more precisely, the period divides $d$ (for $d \mid 8$) iff
-$$(10^d - 1) \mid N \cdot \frac{10^d-1}{M}\cdot M \quad\Longleftrightarrow\quad \frac{M}{10^d-1} \;\Big|\; N.$$
+**Counting.** For $d \mid 8$, the period of $N/M$ divides $d$ exactly when $N/M = \frac{K}{10^d-1}$ for some integer $K$ — that is, when $\frac{M}{10^d-1}$ divides $N$ (note $10^d - 1$ divides $M = 10^8-1$ because $d \mid 8$). The multiples of $\frac{M}{10^d-1}$ in $[0,M)$ are $K\cdot\frac{M}{10^d-1}$ for $K = 0,1,\dots,10^d-2$ (the value $K = 10^d-1$ would give $N = M$, which is excluded), so there are exactly $10^d - 1$ of them. Since $d\mid 8$ means $d\in\{1,2,4,8\}$:
+$$\#\{\text{period}\mid 1\} = 9, \quad \#\{\text{period}\mid 2\} = 99,\quad \#\{\text{period}\mid4\} = 10^4-1,\quad \#\{\text{period}\mid 8\} = 10^8-1.$$
 
-So, writing $T_d = \#\{N : 0\le N < M,\ \text{period of } N/M \text{ divides } d\} = 10^d - 1 + 1 = 10^d$… let us be concrete. The number of $N \in [0, M)$ whose period divides $d$ is the number of multiples of $M/(10^d-1)$ in $[0,M)$, which is $10^d - 1$, plus $N=0$; counting $N=0$ once, there are exactly $10^d - 1$ non-zero such $N$ together with $N=0$, i.e. $10^d$ values including 0. Since $d \mid 8$ means $d \in \{1,2,4,8\}$:
-
-$$\#\{\text{period} \mid 1\} = 10, \quad \#\{\text{period}\mid 2\} = 100,\quad \#\{\text{period}\mid4\} = 10^4,\quad \#\{\text{period}\mid 8\} = 10^8.$$
-
-By inclusion–exclusion (the divisors of 8 form a chain $1 \mid 2 \mid 4 \mid 8$, so this is just a difference):
-$$|S| = 10^8 - 10^4.$$
+The divisors of $8$ form a chain $1 \mid 2 \mid 4 \mid 8$, so "period exactly 8" means "period divides 8 but not 4", and inclusion–exclusion is a single difference:
+$$|S| = \left(10^8-1\right) - \left(10^4-1\right) = 10^8 - 10^4.$$
 
 **Summing.** Pair each $N$ with $M - N$. If $N/M$ has period exactly 8, so does $(M-N)/M$: the decimal block of $M - N$ is the "nines-complement" of that of $N$, and complementing preserves the minimal block length. Also $N \ne M - N$, since $M$ is odd so $N = M/2$ is impossible.
 
