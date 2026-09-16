@@ -1,6 +1,6 @@
 /* Loads and parses the chapter markdown files listed in content/manifest.json. */
 
-import { plain } from './md.js?v=c9f6e661';
+import { plain } from './md.js?v=1cb317fe';
 
 const cache = new Map();
 
@@ -34,6 +34,7 @@ export async function loadLibrary() {
 /* ---------- chapter file parsing ---------- */
 
 function parseFrontMatter(raw) {
+  raw = raw.replace(/\r\n?/g, "\n");  // tolerate CRLF checkouts (Windows autocrlf)
   const m = raw.match(/^---\n([\s\S]*?)\n---\n?/);
   if (!m) return [{}, raw];
   const meta = {};
